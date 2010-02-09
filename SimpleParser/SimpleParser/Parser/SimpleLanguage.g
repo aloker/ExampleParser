@@ -4,6 +4,7 @@ options
 {
 	language=CSharp2;
 	output=AST;
+	k=2;
 }
 
 tokens{
@@ -19,20 +20,17 @@ tokens{
 @parser::namespace { SimpleParser.Parser }
 @lexer::namespace { SimpleParser.Parser }
 
-program	:	statement* NEWLINE? EOF!
-	;
+program	:	(expression (NEWLINE!)?)*  EOF!
+	; 
 
-statement
-	:	assignment NEWLINE!
+	
+expression
+	:	assignment | (term ((PLUS^|MINUS^) term)*)
 	;
 	
 assignment
 	:	IDENTIFIER ASSIGN^ expression
-	;
-	
-expression
-	:	term ((PLUS^|MINUS^) term)*
-	;
+	;	
 	
 term
 	:	value ((MULT^|DIV^|) value)*

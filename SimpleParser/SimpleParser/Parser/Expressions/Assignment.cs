@@ -1,8 +1,6 @@
-using SimpleParser.Expressions;
-
-namespace SimpleParser.Statements
+namespace SimpleParser.Parser.Expressions
 {
-  public class Assignment : IStatement
+  public class Assignment : IExpression
   {
     private readonly string variable;
     private readonly IExpression expression;
@@ -13,9 +11,11 @@ namespace SimpleParser.Statements
       this.expression = expression;
     }
 
-    public void Execute(Storage storage)
+    public int Evaluate(Storage storage)
     {
-      storage.GetVariable(variable, true).Value = expression.Evaluate(storage);
+      var value = expression.Evaluate(storage);
+      storage.GetVariable(variable, true).Value = value;
+      return value;
     }
 
     public string Variable

@@ -15,6 +15,11 @@ namespace SimpleParser
 
     private void runButton_Click(object sender, EventArgs e)
     {
+      Execute();
+    }
+
+    private void Execute()
+    {
       try
       {
         errors.Text = string.Empty;
@@ -29,11 +34,12 @@ namespace SimpleParser
         var program = tree.program().Result;
         if (program != null)
         {
-          program.Run();
+          var res = program.Run();
           foreach (var variable in program.Storage.Variables)
           {
             variables.Items.Add(new ListViewItem(new[] {variable.Key, variable.Value.ToString()}));
           }
+          AppendError("Result", res.ToString());
         }
       }
       catch (Exception exception)
@@ -45,6 +51,16 @@ namespace SimpleParser
     private void AppendError(string where, string message)
     {
       errors.Text += string.Format("{0}: {1}{2}", where, message, Environment.NewLine);
+    }
+
+    private void input_KeyDown(object sender, KeyEventArgs e)
+    {
+      if (e.Control && e.KeyCode == Keys.Enter)
+      {
+        Execute();
+        e.Handled = true;
+        e.SuppressKeyPress = true;
+      }
     }
   }
 }

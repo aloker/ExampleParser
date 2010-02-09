@@ -1,4 +1,4 @@
-namespace SimpleParser
+namespace SimpleParser.Parser
 {
   public class Variable
   {

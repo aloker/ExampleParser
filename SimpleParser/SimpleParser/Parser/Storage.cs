@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using System.Linq;
 
-namespace SimpleParser
+namespace SimpleParser.Parser
 {
   public class Storage
   {

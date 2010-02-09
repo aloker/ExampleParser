@@ -1,4 +1,4 @@
-namespace SimpleParser.Expressions
+namespace SimpleParser.Parser.Expressions
 {
   public abstract class BinaryExpression : IExpression
   {

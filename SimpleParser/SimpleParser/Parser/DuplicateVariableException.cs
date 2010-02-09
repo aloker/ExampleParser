@@ -1,6 +1,6 @@
 using System;
 
-namespace SimpleParser
+namespace SimpleParser.Parser
 {
   public class DuplicateVariableException : ApplicationException
   {
