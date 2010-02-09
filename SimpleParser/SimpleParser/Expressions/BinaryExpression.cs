@@ -21,6 +21,6 @@ namespace SimpleParser.Expressions
       get { return right; }
     }
 
-    public abstract int Evaluate();
+    public abstract int Evaluate(Storage storage);
   }
 }

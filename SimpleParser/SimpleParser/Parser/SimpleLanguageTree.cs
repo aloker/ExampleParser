@@ -1,4 +1,4 @@
-// $ANTLR 3.1.2 E:\\Projects\\my\\parser\\SimpleParser\\SimpleParser\\SimpleLanguageBuilder.g 2010-02-09 12:24:05
+// $ANTLR 3.1.2 E:\\Projects\\my\\parser\\SimpleParser\\SimpleParser\\SimpleLanguageTree.g 2010-02-09 12:46:01
 
 // The variable 'variable' is assigned but its value is never used.
 #pragma warning disable 168, 219
@@ -18,7 +18,7 @@ using Stack 		= Antlr.Runtime.Collections.StackList;
 
 
 
-public partial class SimpleLanguageBuilder : TreeParser
+public partial class SimpleLanguageTree : TreeParser
 {
     public static readonly string[] tokenNames = new string[] 
 	{
@@ -33,6 +33,7 @@ public partial class SimpleLanguageBuilder : TreeParser
 		"ASSIGN", 
 		"LEFTPAREN", 
 		"RIGHTPAREN", 
+		"SEMICOLON", 
 		"IDENTIFIER", 
 		"NUMBER", 
 		"DIGIT", 
@@ -44,30 +45,31 @@ public partial class SimpleLanguageBuilder : TreeParser
 
     public const int LEFTPAREN = 9;
     public const int RIGHTPAREN = 10;
-    public const int LETTER = 15;
-    public const int IDENTIFIER = 11;
+    public const int LETTER = 16;
+    public const int IDENTIFIER = 12;
     public const int ASSIGN = 8;
-    public const int NUMBER = 12;
-    public const int WHITESPACE = 14;
+    public const int NUMBER = 13;
+    public const int WHITESPACE = 15;
     public const int PLUS = 4;
-    public const int DIGIT = 13;
-    public const int LOWER = 16;
+    public const int SEMICOLON = 11;
+    public const int DIGIT = 14;
+    public const int LOWER = 17;
     public const int DIV = 7;
     public const int MULT = 6;
     public const int MINUS = 5;
     public const int EOF = -1;
-    public const int UPPER = 17;
+    public const int UPPER = 18;
 
     // delegates
     // delegators
 
 
 
-        public SimpleLanguageBuilder(ITreeNodeStream input)
+        public SimpleLanguageTree(ITreeNodeStream input)
     		: this(input, new RecognizerSharedState()) {
         }
 
-        public SimpleLanguageBuilder(ITreeNodeStream input, RecognizerSharedState state)
+        public SimpleLanguageTree(ITreeNodeStream input, RecognizerSharedState state)
     		: base(input, state) {
             InitializeCyclicDFAs();
 
@@ -85,20 +87,111 @@ public partial class SimpleLanguageBuilder : TreeParser
     }
 
     override public string[] TokenNames {
-		get { return SimpleLanguageBuilder.tokenNames; }
+		get { return SimpleLanguageTree.tokenNames; }
     }
 
     override public string GrammarFileName {
-		get { return "E:\\Projects\\my\\parser\\SimpleParser\\SimpleParser\\SimpleLanguageBuilder.g"; }
+		get { return "E:\\Projects\\my\\parser\\SimpleParser\\SimpleParser\\SimpleLanguageTree.g"; }
     }
 
 
-    	public Storage Storage{get;set;}
-    	
-    	Variable GetVariable(string name){
-    		return Storage.GetVariable(name, true);
-    	}
+    	private ParsedProgram prog = new ParsedProgram();
 
+
+
+    public class program_return : TreeRuleReturnScope
+    {
+        public ParsedProgram Result;
+        private CommonTree tree;
+        override public object Tree
+        {
+        	get { return tree; }
+        	set { tree = (CommonTree) value; }
+        }
+    };
+
+    // $ANTLR start "program"
+    // E:\\Projects\\my\\parser\\SimpleParser\\SimpleParser\\SimpleLanguageTree.g:23:1: program returns [ParsedProgram Result] : (s= statement )+ ;
+    public SimpleLanguageTree.program_return program() // throws RecognitionException [1]
+    {   
+        SimpleLanguageTree.program_return retval = new SimpleLanguageTree.program_return();
+        retval.Start = input.LT(1);
+
+        CommonTree root_0 = null;
+
+        CommonTree _first_0 = null;
+        CommonTree _last = null;
+
+        SimpleLanguageTree.statement_return s = default(SimpleLanguageTree.statement_return);
+
+
+
+        try 
+    	{
+            // E:\\Projects\\my\\parser\\SimpleParser\\SimpleParser\\SimpleLanguageTree.g:24:2: ( (s= statement )+ )
+            // E:\\Projects\\my\\parser\\SimpleParser\\SimpleParser\\SimpleLanguageTree.g:24:4: (s= statement )+
+            {
+            	root_0 = (CommonTree)adaptor.GetNilNode();
+
+            	// E:\\Projects\\my\\parser\\SimpleParser\\SimpleParser\\SimpleLanguageTree.g:24:4: (s= statement )+
+            	int cnt1 = 0;
+            	do 
+            	{
+            	    int alt1 = 2;
+            	    int LA1_0 = input.LA(1);
+
+            	    if ( (LA1_0 == ASSIGN) )
+            	    {
+            	        alt1 = 1;
+            	    }
+
+
+            	    switch (alt1) 
+            		{
+            			case 1 :
+            			    // E:\\Projects\\my\\parser\\SimpleParser\\SimpleParser\\SimpleLanguageTree.g:24:5: s= statement
+            			    {
+            			    	_last = (CommonTree)input.LT(1);
+            			    	PushFollow(FOLLOW_statement_in_program60);
+            			    	s = statement();
+            			    	state.followingStackPointer--;
+
+            			    	adaptor.AddChild(root_0, s.Tree);
+            			    	prog.AddStatement(s.result);
+
+            			    }
+            			    break;
+
+            			default:
+            			    if ( cnt1 >= 1 ) goto loop1;
+            		            EarlyExitException eee1 =
+            		                new EarlyExitException(1, input);
+            		            throw eee1;
+            	    }
+            	    cnt1++;
+            	} while (true);
+
+            	loop1:
+            		;	// Stops C# compiler whinging that label 'loop1' has no statements
+
+            	 retval.Result =  prog;
+
+            }
+
+            	retval.Tree = (CommonTree)adaptor.RulePostProcessing(root_0);
+
+        }
+        catch (RecognitionException re) 
+    	{
+            ReportError(re);
+            Recover(input,re);
+        }
+        finally 
+    	{
+        }
+        return retval;
+    }
+    // $ANTLR end "program"
 
     public class statement_return : TreeRuleReturnScope
     {
@@ -112,10 +205,10 @@ public partial class SimpleLanguageBuilder : TreeParser
     };
 
     // $ANTLR start "statement"
-    // E:\\Projects\\my\\parser\\SimpleParser\\SimpleParser\\SimpleLanguageBuilder.g:25:1: statement returns [IStatement result] : ^( ASSIGN id= IDENTIFIER expr= expression ) ;
-    public SimpleLanguageBuilder.statement_return statement() // throws RecognitionException [1]
+    // E:\\Projects\\my\\parser\\SimpleParser\\SimpleParser\\SimpleLanguageTree.g:27:1: statement returns [IStatement result] : ^( ASSIGN id= IDENTIFIER expr= expression ) ;
+    public SimpleLanguageTree.statement_return statement() // throws RecognitionException [1]
     {   
-        SimpleLanguageBuilder.statement_return retval = new SimpleLanguageBuilder.statement_return();
+        SimpleLanguageTree.statement_return retval = new SimpleLanguageTree.statement_return();
         retval.Start = input.LT(1);
 
         CommonTree root_0 = null;
@@ -125,7 +218,7 @@ public partial class SimpleLanguageBuilder : TreeParser
 
         CommonTree id = null;
         CommonTree ASSIGN1 = null;
-        SimpleLanguageBuilder.expression_return expr = default(SimpleLanguageBuilder.expression_return);
+        SimpleLanguageTree.expression_return expr = default(SimpleLanguageTree.expression_return);
 
 
         CommonTree id_tree=null;
@@ -133,8 +226,8 @@ public partial class SimpleLanguageBuilder : TreeParser
 
         try 
     	{
-            // E:\\Projects\\my\\parser\\SimpleParser\\SimpleParser\\SimpleLanguageBuilder.g:26:2: ( ^( ASSIGN id= IDENTIFIER expr= expression ) )
-            // E:\\Projects\\my\\parser\\SimpleParser\\SimpleParser\\SimpleLanguageBuilder.g:26:4: ^( ASSIGN id= IDENTIFIER expr= expression )
+            // E:\\Projects\\my\\parser\\SimpleParser\\SimpleParser\\SimpleLanguageTree.g:28:2: ( ^( ASSIGN id= IDENTIFIER expr= expression ) )
+            // E:\\Projects\\my\\parser\\SimpleParser\\SimpleParser\\SimpleLanguageTree.g:28:4: ^( ASSIGN id= IDENTIFIER expr= expression )
             {
             	root_0 = (CommonTree)adaptor.GetNilNode();
 
@@ -143,7 +236,7 @@ public partial class SimpleLanguageBuilder : TreeParser
             	CommonTree _save_last_1 = _last;
             	CommonTree _first_1 = null;
             	CommonTree root_1 = (CommonTree)adaptor.GetNilNode();_last = (CommonTree)input.LT(1);
-            	ASSIGN1=(CommonTree)Match(input,ASSIGN,FOLLOW_ASSIGN_in_statement57); 
+            	ASSIGN1=(CommonTree)Match(input,ASSIGN,FOLLOW_ASSIGN_in_statement82); 
             		ASSIGN1_tree = (CommonTree)adaptor.DupNode(ASSIGN1);
 
             		root_1 = (CommonTree)adaptor.BecomeRoot(ASSIGN1_tree, root_1);
@@ -152,13 +245,13 @@ public partial class SimpleLanguageBuilder : TreeParser
 
             	Match(input, Token.DOWN, null); 
             	_last = (CommonTree)input.LT(1);
-            	id=(CommonTree)Match(input,IDENTIFIER,FOLLOW_IDENTIFIER_in_statement61); 
+            	id=(CommonTree)Match(input,IDENTIFIER,FOLLOW_IDENTIFIER_in_statement86); 
             		id_tree = (CommonTree)adaptor.DupNode(id);
 
             		adaptor.AddChild(root_1, id_tree);
 
             	_last = (CommonTree)input.LT(1);
-            	PushFollow(FOLLOW_expression_in_statement65);
+            	PushFollow(FOLLOW_expression_in_statement90);
             	expr = expression();
             	state.followingStackPointer--;
 
@@ -167,7 +260,7 @@ public partial class SimpleLanguageBuilder : TreeParser
             	Match(input, Token.UP, null); adaptor.AddChild(root_0, root_1);_last = _save_last_1;
             	}
 
-            	 retval.result =  new Assignment(Storage.GetVariable(((id != null) ? id.Text : null), true), ((expr != null) ? expr.result : default(IExpression)));
+            	 retval.result =  new Assignment(((id != null) ? id.Text : null), ((expr != null) ? expr.result : default(IExpression)));
 
             }
 
@@ -198,10 +291,10 @@ public partial class SimpleLanguageBuilder : TreeParser
     };
 
     // $ANTLR start "expression"
-    // E:\\Projects\\my\\parser\\SimpleParser\\SimpleParser\\SimpleLanguageBuilder.g:30:1: expression returns [IExpression result] : ( ^( PLUS left= expression right= expression ) | ^( MINUS left= expression right= expression ) | ^( MULT left= expression right= expression ) | ^( DIV left= expression right= expression ) | NUMBER | IDENTIFIER );
-    public SimpleLanguageBuilder.expression_return expression() // throws RecognitionException [1]
+    // E:\\Projects\\my\\parser\\SimpleParser\\SimpleParser\\SimpleLanguageTree.g:32:1: expression returns [IExpression result] : ( ^( PLUS left= expression right= expression ) | ^( MINUS left= expression right= expression ) | ^( MULT left= expression right= expression ) | ^( DIV left= expression right= expression ) | NUMBER | IDENTIFIER );
+    public SimpleLanguageTree.expression_return expression() // throws RecognitionException [1]
     {   
-        SimpleLanguageBuilder.expression_return retval = new SimpleLanguageBuilder.expression_return();
+        SimpleLanguageTree.expression_return retval = new SimpleLanguageTree.expression_return();
         retval.Start = input.LT(1);
 
         CommonTree root_0 = null;
@@ -215,9 +308,9 @@ public partial class SimpleLanguageBuilder : TreeParser
         CommonTree DIV5 = null;
         CommonTree NUMBER6 = null;
         CommonTree IDENTIFIER7 = null;
-        SimpleLanguageBuilder.expression_return left = default(SimpleLanguageBuilder.expression_return);
+        SimpleLanguageTree.expression_return left = default(SimpleLanguageTree.expression_return);
 
-        SimpleLanguageBuilder.expression_return right = default(SimpleLanguageBuilder.expression_return);
+        SimpleLanguageTree.expression_return right = default(SimpleLanguageTree.expression_return);
 
 
         CommonTree PLUS2_tree=null;
@@ -229,51 +322,51 @@ public partial class SimpleLanguageBuilder : TreeParser
 
         try 
     	{
-            // E:\\Projects\\my\\parser\\SimpleParser\\SimpleParser\\SimpleLanguageBuilder.g:31:2: ( ^( PLUS left= expression right= expression ) | ^( MINUS left= expression right= expression ) | ^( MULT left= expression right= expression ) | ^( DIV left= expression right= expression ) | NUMBER | IDENTIFIER )
-            int alt1 = 6;
+            // E:\\Projects\\my\\parser\\SimpleParser\\SimpleParser\\SimpleLanguageTree.g:33:2: ( ^( PLUS left= expression right= expression ) | ^( MINUS left= expression right= expression ) | ^( MULT left= expression right= expression ) | ^( DIV left= expression right= expression ) | NUMBER | IDENTIFIER )
+            int alt2 = 6;
             switch ( input.LA(1) ) 
             {
             case PLUS:
             	{
-                alt1 = 1;
+                alt2 = 1;
                 }
                 break;
             case MINUS:
             	{
-                alt1 = 2;
+                alt2 = 2;
                 }
                 break;
             case MULT:
             	{
-                alt1 = 3;
+                alt2 = 3;
                 }
                 break;
             case DIV:
             	{
-                alt1 = 4;
+                alt2 = 4;
                 }
                 break;
             case NUMBER:
             	{
-                alt1 = 5;
+                alt2 = 5;
                 }
                 break;
             case IDENTIFIER:
             	{
-                alt1 = 6;
+                alt2 = 6;
                 }
                 break;
             	default:
-            	    NoViableAltException nvae_d1s0 =
-            	        new NoViableAltException("", 1, 0, input);
+            	    NoViableAltException nvae_d2s0 =
+            	        new NoViableAltException("", 2, 0, input);
 
-            	    throw nvae_d1s0;
+            	    throw nvae_d2s0;
             }
 
-            switch (alt1) 
+            switch (alt2) 
             {
                 case 1 :
-                    // E:\\Projects\\my\\parser\\SimpleParser\\SimpleParser\\SimpleLanguageBuilder.g:31:5: ^( PLUS left= expression right= expression )
+                    // E:\\Projects\\my\\parser\\SimpleParser\\SimpleParser\\SimpleLanguageTree.g:33:5: ^( PLUS left= expression right= expression )
                     {
                     	root_0 = (CommonTree)adaptor.GetNilNode();
 
@@ -282,7 +375,7 @@ public partial class SimpleLanguageBuilder : TreeParser
                     	CommonTree _save_last_1 = _last;
                     	CommonTree _first_1 = null;
                     	CommonTree root_1 = (CommonTree)adaptor.GetNilNode();_last = (CommonTree)input.LT(1);
-                    	PLUS2=(CommonTree)Match(input,PLUS,FOLLOW_PLUS_in_expression88); 
+                    	PLUS2=(CommonTree)Match(input,PLUS,FOLLOW_PLUS_in_expression113); 
                     		PLUS2_tree = (CommonTree)adaptor.DupNode(PLUS2);
 
                     		root_1 = (CommonTree)adaptor.BecomeRoot(PLUS2_tree, root_1);
@@ -291,13 +384,13 @@ public partial class SimpleLanguageBuilder : TreeParser
 
                     	Match(input, Token.DOWN, null); 
                     	_last = (CommonTree)input.LT(1);
-                    	PushFollow(FOLLOW_expression_in_expression92);
+                    	PushFollow(FOLLOW_expression_in_expression117);
                     	left = expression();
                     	state.followingStackPointer--;
 
                     	adaptor.AddChild(root_1, left.Tree);
                     	_last = (CommonTree)input.LT(1);
-                    	PushFollow(FOLLOW_expression_in_expression96);
+                    	PushFollow(FOLLOW_expression_in_expression121);
                     	right = expression();
                     	state.followingStackPointer--;
 
@@ -311,7 +404,7 @@ public partial class SimpleLanguageBuilder : TreeParser
                     }
                     break;
                 case 2 :
-                    // E:\\Projects\\my\\parser\\SimpleParser\\SimpleParser\\SimpleLanguageBuilder.g:32:4: ^( MINUS left= expression right= expression )
+                    // E:\\Projects\\my\\parser\\SimpleParser\\SimpleParser\\SimpleLanguageTree.g:34:4: ^( MINUS left= expression right= expression )
                     {
                     	root_0 = (CommonTree)adaptor.GetNilNode();
 
@@ -320,7 +413,7 @@ public partial class SimpleLanguageBuilder : TreeParser
                     	CommonTree _save_last_1 = _last;
                     	CommonTree _first_1 = null;
                     	CommonTree root_1 = (CommonTree)adaptor.GetNilNode();_last = (CommonTree)input.LT(1);
-                    	MINUS3=(CommonTree)Match(input,MINUS,FOLLOW_MINUS_in_expression106); 
+                    	MINUS3=(CommonTree)Match(input,MINUS,FOLLOW_MINUS_in_expression131); 
                     		MINUS3_tree = (CommonTree)adaptor.DupNode(MINUS3);
 
                     		root_1 = (CommonTree)adaptor.BecomeRoot(MINUS3_tree, root_1);
@@ -329,13 +422,13 @@ public partial class SimpleLanguageBuilder : TreeParser
 
                     	Match(input, Token.DOWN, null); 
                     	_last = (CommonTree)input.LT(1);
-                    	PushFollow(FOLLOW_expression_in_expression110);
+                    	PushFollow(FOLLOW_expression_in_expression135);
                     	left = expression();
                     	state.followingStackPointer--;
 
                     	adaptor.AddChild(root_1, left.Tree);
                     	_last = (CommonTree)input.LT(1);
-                    	PushFollow(FOLLOW_expression_in_expression114);
+                    	PushFollow(FOLLOW_expression_in_expression139);
                     	right = expression();
                     	state.followingStackPointer--;
 
@@ -349,7 +442,7 @@ public partial class SimpleLanguageBuilder : TreeParser
                     }
                     break;
                 case 3 :
-                    // E:\\Projects\\my\\parser\\SimpleParser\\SimpleParser\\SimpleLanguageBuilder.g:33:4: ^( MULT left= expression right= expression )
+                    // E:\\Projects\\my\\parser\\SimpleParser\\SimpleParser\\SimpleLanguageTree.g:35:4: ^( MULT left= expression right= expression )
                     {
                     	root_0 = (CommonTree)adaptor.GetNilNode();
 
@@ -358,7 +451,7 @@ public partial class SimpleLanguageBuilder : TreeParser
                     	CommonTree _save_last_1 = _last;
                     	CommonTree _first_1 = null;
                     	CommonTree root_1 = (CommonTree)adaptor.GetNilNode();_last = (CommonTree)input.LT(1);
-                    	MULT4=(CommonTree)Match(input,MULT,FOLLOW_MULT_in_expression123); 
+                    	MULT4=(CommonTree)Match(input,MULT,FOLLOW_MULT_in_expression148); 
                     		MULT4_tree = (CommonTree)adaptor.DupNode(MULT4);
 
                     		root_1 = (CommonTree)adaptor.BecomeRoot(MULT4_tree, root_1);
@@ -367,13 +460,13 @@ public partial class SimpleLanguageBuilder : TreeParser
 
                     	Match(input, Token.DOWN, null); 
                     	_last = (CommonTree)input.LT(1);
-                    	PushFollow(FOLLOW_expression_in_expression127);
+                    	PushFollow(FOLLOW_expression_in_expression152);
                     	left = expression();
                     	state.followingStackPointer--;
 
                     	adaptor.AddChild(root_1, left.Tree);
                     	_last = (CommonTree)input.LT(1);
-                    	PushFollow(FOLLOW_expression_in_expression131);
+                    	PushFollow(FOLLOW_expression_in_expression156);
                     	right = expression();
                     	state.followingStackPointer--;
 
@@ -387,7 +480,7 @@ public partial class SimpleLanguageBuilder : TreeParser
                     }
                     break;
                 case 4 :
-                    // E:\\Projects\\my\\parser\\SimpleParser\\SimpleParser\\SimpleLanguageBuilder.g:34:4: ^( DIV left= expression right= expression )
+                    // E:\\Projects\\my\\parser\\SimpleParser\\SimpleParser\\SimpleLanguageTree.g:36:4: ^( DIV left= expression right= expression )
                     {
                     	root_0 = (CommonTree)adaptor.GetNilNode();
 
@@ -396,7 +489,7 @@ public partial class SimpleLanguageBuilder : TreeParser
                     	CommonTree _save_last_1 = _last;
                     	CommonTree _first_1 = null;
                     	CommonTree root_1 = (CommonTree)adaptor.GetNilNode();_last = (CommonTree)input.LT(1);
-                    	DIV5=(CommonTree)Match(input,DIV,FOLLOW_DIV_in_expression141); 
+                    	DIV5=(CommonTree)Match(input,DIV,FOLLOW_DIV_in_expression166); 
                     		DIV5_tree = (CommonTree)adaptor.DupNode(DIV5);
 
                     		root_1 = (CommonTree)adaptor.BecomeRoot(DIV5_tree, root_1);
@@ -405,13 +498,13 @@ public partial class SimpleLanguageBuilder : TreeParser
 
                     	Match(input, Token.DOWN, null); 
                     	_last = (CommonTree)input.LT(1);
-                    	PushFollow(FOLLOW_expression_in_expression145);
+                    	PushFollow(FOLLOW_expression_in_expression170);
                     	left = expression();
                     	state.followingStackPointer--;
 
                     	adaptor.AddChild(root_1, left.Tree);
                     	_last = (CommonTree)input.LT(1);
-                    	PushFollow(FOLLOW_expression_in_expression149);
+                    	PushFollow(FOLLOW_expression_in_expression174);
                     	right = expression();
                     	state.followingStackPointer--;
 
@@ -425,12 +518,12 @@ public partial class SimpleLanguageBuilder : TreeParser
                     }
                     break;
                 case 5 :
-                    // E:\\Projects\\my\\parser\\SimpleParser\\SimpleParser\\SimpleLanguageBuilder.g:35:11: NUMBER
+                    // E:\\Projects\\my\\parser\\SimpleParser\\SimpleParser\\SimpleLanguageTree.g:37:11: NUMBER
                     {
                     	root_0 = (CommonTree)adaptor.GetNilNode();
 
                     	_last = (CommonTree)input.LT(1);
-                    	NUMBER6=(CommonTree)Match(input,NUMBER,FOLLOW_NUMBER_in_expression164); 
+                    	NUMBER6=(CommonTree)Match(input,NUMBER,FOLLOW_NUMBER_in_expression189); 
                     		NUMBER6_tree = (CommonTree)adaptor.DupNode(NUMBER6);
 
                     		adaptor.AddChild(root_0, NUMBER6_tree);
@@ -440,17 +533,17 @@ public partial class SimpleLanguageBuilder : TreeParser
                     }
                     break;
                 case 6 :
-                    // E:\\Projects\\my\\parser\\SimpleParser\\SimpleParser\\SimpleLanguageBuilder.g:36:4: IDENTIFIER
+                    // E:\\Projects\\my\\parser\\SimpleParser\\SimpleParser\\SimpleLanguageTree.g:38:4: IDENTIFIER
                     {
                     	root_0 = (CommonTree)adaptor.GetNilNode();
 
                     	_last = (CommonTree)input.LT(1);
-                    	IDENTIFIER7=(CommonTree)Match(input,IDENTIFIER,FOLLOW_IDENTIFIER_in_expression171); 
+                    	IDENTIFIER7=(CommonTree)Match(input,IDENTIFIER,FOLLOW_IDENTIFIER_in_expression196); 
                     		IDENTIFIER7_tree = (CommonTree)adaptor.DupNode(IDENTIFIER7);
 
                     		adaptor.AddChild(root_0, IDENTIFIER7_tree);
 
-                    	 retval.result =  new VariableExpression( Storage.GetVariable(((IDENTIFIER7 != null) ? IDENTIFIER7.Text : null), true));
+                    	 retval.result =  new VariableExpression( ((IDENTIFIER7 != null) ? IDENTIFIER7.Text : null));
 
                     }
                     break;
@@ -480,22 +573,23 @@ public partial class SimpleLanguageBuilder : TreeParser
 
  
 
-    public static readonly BitSet FOLLOW_ASSIGN_in_statement57 = new BitSet(new ulong[]{0x0000000000000004UL});
-    public static readonly BitSet FOLLOW_IDENTIFIER_in_statement61 = new BitSet(new ulong[]{0x00000000000018F0UL});
-    public static readonly BitSet FOLLOW_expression_in_statement65 = new BitSet(new ulong[]{0x0000000000000008UL});
-    public static readonly BitSet FOLLOW_PLUS_in_expression88 = new BitSet(new ulong[]{0x0000000000000004UL});
-    public static readonly BitSet FOLLOW_expression_in_expression92 = new BitSet(new ulong[]{0x00000000000018F0UL});
-    public static readonly BitSet FOLLOW_expression_in_expression96 = new BitSet(new ulong[]{0x0000000000000008UL});
-    public static readonly BitSet FOLLOW_MINUS_in_expression106 = new BitSet(new ulong[]{0x0000000000000004UL});
-    public static readonly BitSet FOLLOW_expression_in_expression110 = new BitSet(new ulong[]{0x00000000000018F0UL});
-    public static readonly BitSet FOLLOW_expression_in_expression114 = new BitSet(new ulong[]{0x0000000000000008UL});
-    public static readonly BitSet FOLLOW_MULT_in_expression123 = new BitSet(new ulong[]{0x0000000000000004UL});
-    public static readonly BitSet FOLLOW_expression_in_expression127 = new BitSet(new ulong[]{0x00000000000018F0UL});
-    public static readonly BitSet FOLLOW_expression_in_expression131 = new BitSet(new ulong[]{0x0000000000000008UL});
-    public static readonly BitSet FOLLOW_DIV_in_expression141 = new BitSet(new ulong[]{0x0000000000000004UL});
-    public static readonly BitSet FOLLOW_expression_in_expression145 = new BitSet(new ulong[]{0x00000000000018F0UL});
-    public static readonly BitSet FOLLOW_expression_in_expression149 = new BitSet(new ulong[]{0x0000000000000008UL});
-    public static readonly BitSet FOLLOW_NUMBER_in_expression164 = new BitSet(new ulong[]{0x0000000000000002UL});
-    public static readonly BitSet FOLLOW_IDENTIFIER_in_expression171 = new BitSet(new ulong[]{0x0000000000000002UL});
+    public static readonly BitSet FOLLOW_statement_in_program60 = new BitSet(new ulong[]{0x0000000000000102UL});
+    public static readonly BitSet FOLLOW_ASSIGN_in_statement82 = new BitSet(new ulong[]{0x0000000000000004UL});
+    public static readonly BitSet FOLLOW_IDENTIFIER_in_statement86 = new BitSet(new ulong[]{0x00000000000030F0UL});
+    public static readonly BitSet FOLLOW_expression_in_statement90 = new BitSet(new ulong[]{0x0000000000000008UL});
+    public static readonly BitSet FOLLOW_PLUS_in_expression113 = new BitSet(new ulong[]{0x0000000000000004UL});
+    public static readonly BitSet FOLLOW_expression_in_expression117 = new BitSet(new ulong[]{0x00000000000030F0UL});
+    public static readonly BitSet FOLLOW_expression_in_expression121 = new BitSet(new ulong[]{0x0000000000000008UL});
+    public static readonly BitSet FOLLOW_MINUS_in_expression131 = new BitSet(new ulong[]{0x0000000000000004UL});
+    public static readonly BitSet FOLLOW_expression_in_expression135 = new BitSet(new ulong[]{0x00000000000030F0UL});
+    public static readonly BitSet FOLLOW_expression_in_expression139 = new BitSet(new ulong[]{0x0000000000000008UL});
+    public static readonly BitSet FOLLOW_MULT_in_expression148 = new BitSet(new ulong[]{0x0000000000000004UL});
+    public static readonly BitSet FOLLOW_expression_in_expression152 = new BitSet(new ulong[]{0x00000000000030F0UL});
+    public static readonly BitSet FOLLOW_expression_in_expression156 = new BitSet(new ulong[]{0x0000000000000008UL});
+    public static readonly BitSet FOLLOW_DIV_in_expression166 = new BitSet(new ulong[]{0x0000000000000004UL});
+    public static readonly BitSet FOLLOW_expression_in_expression170 = new BitSet(new ulong[]{0x00000000000030F0UL});
+    public static readonly BitSet FOLLOW_expression_in_expression174 = new BitSet(new ulong[]{0x0000000000000008UL});
+    public static readonly BitSet FOLLOW_NUMBER_in_expression189 = new BitSet(new ulong[]{0x0000000000000002UL});
+    public static readonly BitSet FOLLOW_IDENTIFIER_in_expression196 = new BitSet(new ulong[]{0x0000000000000002UL});
 
 }

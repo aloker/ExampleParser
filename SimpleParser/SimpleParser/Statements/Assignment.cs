@@ -4,23 +4,23 @@ namespace SimpleParser.Statements
 {
   public class Assignment : IStatement
   {
-    private readonly Variable destination;
+    private readonly string variable;
     private readonly IExpression expression;
 
-    public Assignment(Variable destination, IExpression expression)
+    public Assignment(string variable, IExpression expression)
     {
-      this.destination = destination;
+      this.variable = variable;
       this.expression = expression;
     }
 
-    public void Execute()
+    public void Execute(Storage storage)
     {
-      destination.Value = expression.Evaluate();
+      storage.GetVariable(variable, true).Value = expression.Evaluate(storage);
     }
 
-    public Variable Destination
+    public string Variable
     {
-      get { return destination; }
+      get { return variable; }
     }
 
     public IExpression Expression

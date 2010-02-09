@@ -2,6 +2,6 @@ namespace SimpleParser.Expressions
 {
   public interface IExpression
   {
-    int Evaluate();
+    int Evaluate(Storage storage);
   }
 }

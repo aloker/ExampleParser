@@ -55,9 +55,14 @@
     <Compile Include="Expressions\IExpression.cs" />
     <Compile Include="Expressions\SimpleBinaryExpression.cs" />
     <Compile Include="Expressions\VariableExpression.cs" />
-    <Compile Include="Parser\SimpleLanguageBuilder.cs" />
-    <Compile Include="Parser\SimpleLanguageLexer.cs" />
-    <Compile Include="Parser\SimpleLanguageParser.cs" />
+    <Compile Include="ParsedProgram.cs" />
+    <Compile Include="Parser\SimpleLanguageLexer.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Parser\SimpleLanguageParser.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Parser\SimpleLanguageTree.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Statements\Assignment.cs" />
@@ -68,7 +73,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Parser\SimpleLanguage.tokens" />
-    <None Include="Parser\SimpleLanguageBuilder.tokens" />
+    <None Include="Parser\SimpleLanguageTree.tokens" />
+    <None Include="SimpleLanguage.g" />
+    <None Include="SimpleLanguageTree.g" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

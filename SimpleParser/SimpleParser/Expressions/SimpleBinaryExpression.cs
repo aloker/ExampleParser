@@ -12,9 +12,9 @@ namespace SimpleParser.Expressions
       this.evaluator = evaluator;
     }
 
-    public override int Evaluate()
+    public override int Evaluate(Storage storage)
     {
-      return evaluator(Left.Evaluate(), Right.Evaluate());
+      return evaluator(Left.Evaluate(storage), Right.Evaluate(storage));
     }
 
     public static SimpleBinaryExpression Add(IExpression left, IExpression right)

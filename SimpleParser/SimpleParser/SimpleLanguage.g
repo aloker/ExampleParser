@@ -14,11 +14,14 @@ tokens{
 	ASSIGN='=';
 	LEFTPAREN='(';
 	RIGHTPAREN=')';	
+	SEMICOLON=';';
 }
 
+program	:	statement+
+	;
 
 statement
-	:	assignment
+	:	assignment SEMICOLON
 	;
 	
 assignment
@@ -34,7 +37,7 @@ term
 	;
 	
 value
-	:	(LEFTPAREN expression RIGHTPAREN) | NUMBER | IDENTIFIER
+	:	(LEFTPAREN! expression RIGHTPAREN!) | NUMBER | IDENTIFIER
 	;
 	
 

@@ -1,4 +1,4 @@
-tree grammar SimpleLanguageBuilder;
+tree grammar SimpleLanguageTree;
 
 options 
 {
@@ -15,15 +15,17 @@ using SimpleParser.Expressions;
 }
 
 @members{
-	public Storage Storage{get;set;}
-	
-	Variable GetVariable(string name){
-		return Storage.GetVariable(name, true);
-	}
+	private ParsedProgram prog = new ParsedProgram();
+
 }
 
+
+program	returns [ParsedProgram Result]
+	:	(s=statement {prog.AddStatement(s.result);})+ { $Result = prog;}
+	;
+
 statement returns [IStatement result]
-	:	^(ASSIGN id=IDENTIFIER expr=expression) { $result = new Assignment(Storage.GetVariable($id.text, true), $expr.result);}
+	:	^(ASSIGN id=IDENTIFIER expr=expression) { $result = new Assignment($id.text, $expr.result);}
 	;
 	
 	
@@ -33,6 +35,6 @@ expression returns [IExpression result]
 		|^(MULT left=expression right=expression)  { $result = SimpleBinaryExpression.Multiply(left.result, right.result);}
 		|^(DIV left=expression right=expression)	{ $result = SimpleBinaryExpression.Divide(left.result, right.result);}
 	        |NUMBER { $result = new ConstantExpression(Convert.ToInt32($NUMBER.text));}
-		|IDENTIFIER { $result = new VariableExpression( Storage.GetVariable($IDENTIFIER.text, true));}	
+		|IDENTIFIER { $result = new VariableExpression( $IDENTIFIER.text);}	
 	;
 	

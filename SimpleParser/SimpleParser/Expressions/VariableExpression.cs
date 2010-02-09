@@ -2,16 +2,16 @@ namespace SimpleParser.Expressions
 {
   public class VariableExpression : IExpression
   {
-    private readonly Variable variable;
+    private readonly string variableName;
 
-    public VariableExpression(Variable variable)
+    public VariableExpression(string variableName)
     {
-      this.variable = variable;
+      this.variableName = variableName;
     }
 
-    public int Evaluate()
+    public int Evaluate(Storage storage)
     {
-      return variable.Value;
+      return storage.GetVariable(variableName, false).Value;
     }
   }
 }

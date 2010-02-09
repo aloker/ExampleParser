@@ -9,7 +9,7 @@ namespace SimpleParser.Expressions
       this.value = value;
     }
 
-    public int Evaluate()
+    public int Evaluate(Storage storage)
     {
       return value;
     }

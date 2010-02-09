@@ -8,13 +8,26 @@ namespace SimpleParser
   {
     private static void Main(string[] args)
     {
-      var storage = new Storage();
-      var lexer = new SimpleLanguageLexer(new ANTLRStringStream("foo=5+3"));
-      var parser = new SimpleLanguageParser(new CommonTokenStream(lexer));
-      var tree = new SimpleLanguageBuilder(new CommonTreeNodeStream(parser.statement().Tree)) {Storage = storage};
-      tree.statement().result.Execute();
+      const string source = @"
+b = 6;
+foo =  (a + b) * 6; 
+";
 
-      Console.WriteLine(storage.GetVariable("foo").Value);
+      try
+      {
+        var lexer = new SimpleLanguageLexer(new ANTLRStringStream(source));
+        var parser = new SimpleLanguageParser(new CommonTokenStream(lexer));
+        var tree = new SimpleLanguageTree(new CommonTreeNodeStream(parser.statement().Tree));
+        var program = tree.program().Result;
+        program.Storage.Declare("a", 123);
+        program.Run();
+
+        Console.WriteLine(program.Storage.GetVariable("foo").Value);
+      }
+      catch (Exception e)
+      {
+        Console.WriteLine(e.Message);
+      }
     }
   }
 }

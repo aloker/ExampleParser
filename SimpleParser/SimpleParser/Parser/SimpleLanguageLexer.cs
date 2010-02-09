@@ -1,4 +1,4 @@
-// $ANTLR 3.1.2 E:\\Projects\\my\\parser\\SimpleParser\\SimpleParser\\SimpleLanguage.g 2010-02-09 11:54:23
+// $ANTLR 3.1.2 E:\\Projects\\my\\parser\\SimpleParser\\SimpleParser\\SimpleLanguage.g 2010-02-09 12:35:05
 
 // The variable 'variable' is assigned but its value is never used.
 #pragma warning disable 168, 219
@@ -15,19 +15,20 @@ using Stack 		= Antlr.Runtime.Collections.StackList;
 public partial class SimpleLanguageLexer : Lexer {
     public const int LEFTPAREN = 9;
     public const int RIGHTPAREN = 10;
-    public const int LETTER = 15;
-    public const int IDENTIFIER = 11;
+    public const int LETTER = 16;
+    public const int IDENTIFIER = 12;
     public const int ASSIGN = 8;
-    public const int NUMBER = 12;
-    public const int WHITESPACE = 14;
+    public const int NUMBER = 13;
+    public const int WHITESPACE = 15;
     public const int PLUS = 4;
-    public const int DIGIT = 13;
-    public const int LOWER = 16;
+    public const int SEMICOLON = 11;
+    public const int DIGIT = 14;
+    public const int LOWER = 17;
     public const int DIV = 7;
     public const int MULT = 6;
     public const int MINUS = 5;
     public const int EOF = -1;
-    public const int UPPER = 17;
+    public const int UPPER = 18;
 
     // delegates
     // delegators
@@ -211,6 +212,29 @@ public partial class SimpleLanguageLexer : Lexer {
     }
     // $ANTLR end "RIGHTPAREN"
 
+    // $ANTLR start "SEMICOLON"
+    public void mSEMICOLON() // throws RecognitionException [2]
+    {
+    		try
+    		{
+            int _type = SEMICOLON;
+    	int _channel = DEFAULT_TOKEN_CHANNEL;
+            // E:\\Projects\\my\\parser\\SimpleParser\\SimpleParser\\SimpleLanguage.g:14:11: ( ';' )
+            // E:\\Projects\\my\\parser\\SimpleParser\\SimpleParser\\SimpleLanguage.g:14:13: ';'
+            {
+            	Match(';'); 
+
+            }
+
+            state.type = _type;
+            state.channel = _channel;
+        }
+        finally 
+    	{
+        }
+    }
+    // $ANTLR end "SEMICOLON"
+
     // $ANTLR start "NUMBER"
     public void mNUMBER() // throws RecognitionException [2]
     {
@@ -218,10 +242,10 @@ public partial class SimpleLanguageLexer : Lexer {
     		{
             int _type = NUMBER;
     	int _channel = DEFAULT_TOKEN_CHANNEL;
-            // E:\\Projects\\my\\parser\\SimpleParser\\SimpleParser\\SimpleLanguage.g:42:8: ( ( DIGIT )+ )
-            // E:\\Projects\\my\\parser\\SimpleParser\\SimpleParser\\SimpleLanguage.g:42:10: ( DIGIT )+
+            // E:\\Projects\\my\\parser\\SimpleParser\\SimpleParser\\SimpleLanguage.g:43:8: ( ( DIGIT )+ )
+            // E:\\Projects\\my\\parser\\SimpleParser\\SimpleParser\\SimpleLanguage.g:43:10: ( DIGIT )+
             {
-            	// E:\\Projects\\my\\parser\\SimpleParser\\SimpleParser\\SimpleLanguage.g:42:10: ( DIGIT )+
+            	// E:\\Projects\\my\\parser\\SimpleParser\\SimpleParser\\SimpleLanguage.g:43:10: ( DIGIT )+
             	int cnt1 = 0;
             	do 
             	{
@@ -237,7 +261,7 @@ public partial class SimpleLanguageLexer : Lexer {
             	    switch (alt1) 
             		{
             			case 1 :
-            			    // E:\\Projects\\my\\parser\\SimpleParser\\SimpleParser\\SimpleLanguage.g:42:10: DIGIT
+            			    // E:\\Projects\\my\\parser\\SimpleParser\\SimpleParser\\SimpleLanguage.g:43:10: DIGIT
             			    {
             			    	mDIGIT(); 
 
@@ -275,10 +299,10 @@ public partial class SimpleLanguageLexer : Lexer {
     		{
             int _type = WHITESPACE;
     	int _channel = DEFAULT_TOKEN_CHANNEL;
-            // E:\\Projects\\my\\parser\\SimpleParser\\SimpleParser\\SimpleLanguage.g:44:2: ( ( '\\t' | ' ' | '\\r' | '\\n' | '\\u000C' )+ )
-            // E:\\Projects\\my\\parser\\SimpleParser\\SimpleParser\\SimpleLanguage.g:44:4: ( '\\t' | ' ' | '\\r' | '\\n' | '\\u000C' )+
+            // E:\\Projects\\my\\parser\\SimpleParser\\SimpleParser\\SimpleLanguage.g:45:2: ( ( '\\t' | ' ' | '\\r' | '\\n' | '\\u000C' )+ )
+            // E:\\Projects\\my\\parser\\SimpleParser\\SimpleParser\\SimpleLanguage.g:45:4: ( '\\t' | ' ' | '\\r' | '\\n' | '\\u000C' )+
             {
-            	// E:\\Projects\\my\\parser\\SimpleParser\\SimpleParser\\SimpleLanguage.g:44:4: ( '\\t' | ' ' | '\\r' | '\\n' | '\\u000C' )+
+            	// E:\\Projects\\my\\parser\\SimpleParser\\SimpleParser\\SimpleLanguage.g:45:4: ( '\\t' | ' ' | '\\r' | '\\n' | '\\u000C' )+
             	int cnt2 = 0;
             	do 
             	{
@@ -343,11 +367,11 @@ public partial class SimpleLanguageLexer : Lexer {
     		{
             int _type = IDENTIFIER;
     	int _channel = DEFAULT_TOKEN_CHANNEL;
-            // E:\\Projects\\my\\parser\\SimpleParser\\SimpleParser\\SimpleLanguage.g:46:2: ( LETTER ( DIGIT | LETTER )* )
-            // E:\\Projects\\my\\parser\\SimpleParser\\SimpleParser\\SimpleLanguage.g:46:4: LETTER ( DIGIT | LETTER )*
+            // E:\\Projects\\my\\parser\\SimpleParser\\SimpleParser\\SimpleLanguage.g:47:2: ( LETTER ( DIGIT | LETTER )* )
+            // E:\\Projects\\my\\parser\\SimpleParser\\SimpleParser\\SimpleLanguage.g:47:4: LETTER ( DIGIT | LETTER )*
             {
             	mLETTER(); 
-            	// E:\\Projects\\my\\parser\\SimpleParser\\SimpleParser\\SimpleLanguage.g:46:11: ( DIGIT | LETTER )*
+            	// E:\\Projects\\my\\parser\\SimpleParser\\SimpleParser\\SimpleLanguage.g:47:11: ( DIGIT | LETTER )*
             	do 
             	{
             	    int alt3 = 2;
@@ -404,7 +428,7 @@ public partial class SimpleLanguageLexer : Lexer {
     {
     		try
     		{
-            // E:\\Projects\\my\\parser\\SimpleParser\\SimpleParser\\SimpleLanguage.g:48:16: ( LOWER | UPPER )
+            // E:\\Projects\\my\\parser\\SimpleParser\\SimpleParser\\SimpleLanguage.g:49:16: ( LOWER | UPPER )
             // E:\\Projects\\my\\parser\\SimpleParser\\SimpleParser\\SimpleLanguage.g:
             {
             	if ( (input.LA(1) >= 'A' && input.LA(1) <= 'Z') || (input.LA(1) >= 'a' && input.LA(1) <= 'z') ) 
@@ -433,8 +457,8 @@ public partial class SimpleLanguageLexer : Lexer {
     {
     		try
     		{
-            // E:\\Projects\\my\\parser\\SimpleParser\\SimpleParser\\SimpleLanguage.g:49:15: ( 'a' .. 'z' )
-            // E:\\Projects\\my\\parser\\SimpleParser\\SimpleParser\\SimpleLanguage.g:49:17: 'a' .. 'z'
+            // E:\\Projects\\my\\parser\\SimpleParser\\SimpleParser\\SimpleLanguage.g:50:15: ( 'a' .. 'z' )
+            // E:\\Projects\\my\\parser\\SimpleParser\\SimpleParser\\SimpleLanguage.g:50:17: 'a' .. 'z'
             {
             	MatchRange('a','z'); 
 
@@ -452,8 +476,8 @@ public partial class SimpleLanguageLexer : Lexer {
     {
     		try
     		{
-            // E:\\Projects\\my\\parser\\SimpleParser\\SimpleParser\\SimpleLanguage.g:50:15: ( 'A' .. 'Z' )
-            // E:\\Projects\\my\\parser\\SimpleParser\\SimpleParser\\SimpleLanguage.g:50:17: 'A' .. 'Z'
+            // E:\\Projects\\my\\parser\\SimpleParser\\SimpleParser\\SimpleLanguage.g:51:15: ( 'A' .. 'Z' )
+            // E:\\Projects\\my\\parser\\SimpleParser\\SimpleParser\\SimpleLanguage.g:51:17: 'A' .. 'Z'
             {
             	MatchRange('A','Z'); 
 
@@ -471,8 +495,8 @@ public partial class SimpleLanguageLexer : Lexer {
     {
     		try
     		{
-            // E:\\Projects\\my\\parser\\SimpleParser\\SimpleParser\\SimpleLanguage.g:51:15: ( '0' .. '9' )
-            // E:\\Projects\\my\\parser\\SimpleParser\\SimpleParser\\SimpleLanguage.g:51:17: '0' .. '9'
+            // E:\\Projects\\my\\parser\\SimpleParser\\SimpleParser\\SimpleLanguage.g:52:15: ( '0' .. '9' )
+            // E:\\Projects\\my\\parser\\SimpleParser\\SimpleParser\\SimpleLanguage.g:52:17: '0' .. '9'
             {
             	MatchRange('0','9'); 
 
@@ -487,8 +511,8 @@ public partial class SimpleLanguageLexer : Lexer {
 
     override public void mTokens() // throws RecognitionException 
     {
-        // E:\\Projects\\my\\parser\\SimpleParser\\SimpleParser\\SimpleLanguage.g:1:8: ( PLUS | MINUS | MULT | DIV | ASSIGN | LEFTPAREN | RIGHTPAREN | NUMBER | WHITESPACE | IDENTIFIER )
-        int alt4 = 10;
+        // E:\\Projects\\my\\parser\\SimpleParser\\SimpleParser\\SimpleLanguage.g:1:8: ( PLUS | MINUS | MULT | DIV | ASSIGN | LEFTPAREN | RIGHTPAREN | SEMICOLON | NUMBER | WHITESPACE | IDENTIFIER )
+        int alt4 = 11;
         switch ( input.LA(1) ) 
         {
         case '+':
@@ -526,6 +550,11 @@ public partial class SimpleLanguageLexer : Lexer {
             alt4 = 7;
             }
             break;
+        case ';':
+        	{
+            alt4 = 8;
+            }
+            break;
         case '0':
         case '1':
         case '2':
@@ -537,7 +566,7 @@ public partial class SimpleLanguageLexer : Lexer {
         case '8':
         case '9':
         	{
-            alt4 = 8;
+            alt4 = 9;
             }
             break;
         case '\t':
@@ -546,7 +575,7 @@ public partial class SimpleLanguageLexer : Lexer {
         case '\r':
         case ' ':
         	{
-            alt4 = 9;
+            alt4 = 10;
             }
             break;
         case 'A':
@@ -602,7 +631,7 @@ public partial class SimpleLanguageLexer : Lexer {
         case 'y':
         case 'z':
         	{
-            alt4 = 10;
+            alt4 = 11;
             }
             break;
         	default:
@@ -664,21 +693,28 @@ public partial class SimpleLanguageLexer : Lexer {
                 }
                 break;
             case 8 :
-                // E:\\Projects\\my\\parser\\SimpleParser\\SimpleParser\\SimpleLanguage.g:1:58: NUMBER
+                // E:\\Projects\\my\\parser\\SimpleParser\\SimpleParser\\SimpleLanguage.g:1:58: SEMICOLON
+                {
+                	mSEMICOLON(); 
+
+                }
+                break;
+            case 9 :
+                // E:\\Projects\\my\\parser\\SimpleParser\\SimpleParser\\SimpleLanguage.g:1:68: NUMBER
                 {
                 	mNUMBER(); 
 
                 }
                 break;
-            case 9 :
-                // E:\\Projects\\my\\parser\\SimpleParser\\SimpleParser\\SimpleLanguage.g:1:65: WHITESPACE
+            case 10 :
+                // E:\\Projects\\my\\parser\\SimpleParser\\SimpleParser\\SimpleLanguage.g:1:75: WHITESPACE
                 {
                 	mWHITESPACE(); 
 
                 }
                 break;
-            case 10 :
-                // E:\\Projects\\my\\parser\\SimpleParser\\SimpleParser\\SimpleLanguage.g:1:76: IDENTIFIER
+            case 11 :
+                // E:\\Projects\\my\\parser\\SimpleParser\\SimpleParser\\SimpleLanguage.g:1:86: IDENTIFIER
                 {
                 	mIDENTIFIER(); 
 
