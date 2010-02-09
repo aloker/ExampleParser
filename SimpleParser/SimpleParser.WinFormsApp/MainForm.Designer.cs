@@ -1,4 +1,4 @@
-﻿namespace SimpleParser
+﻿namespace SimpleParser.WinFormsApp
 {
   partial class MainForm
   {
@@ -111,11 +111,11 @@
       this.errors.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)
                   | System.Windows.Forms.AnchorStyles.Right)));
       this.errors.Font = new System.Drawing.Font("Consolas", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-      this.errors.Location = new System.Drawing.Point(12, 321);
+      this.errors.Location = new System.Drawing.Point(12, 324);
       this.errors.Multiline = true;
       this.errors.Name = "errors";
       this.errors.ReadOnly = true;
-      this.errors.Size = new System.Drawing.Size(672, 104);
+      this.errors.Size = new System.Drawing.Size(672, 101);
       this.errors.TabIndex = 5;
       // 
       // label3

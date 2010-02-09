@@ -2,4 +2,5 @@
 *.user
 _ReSharper*
 SimpleParser/SimpleParser/bin/
+SimpleParser/SimpleParser.WinFormsApp/bin/
 obj/

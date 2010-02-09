@@ -41,7 +41,7 @@ namespace SimpleParser.Parser
       }
 
       var program = CompileProgram(parseTree);
-      lastResult = program != null ? program.Run() : 0;
+      lastResult = program != null ? program.Run(storage) : 0;
     }
 
     private SimpleLanguageLexer CreateLexer(string expression)

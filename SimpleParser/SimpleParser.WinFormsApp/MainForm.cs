@@ -2,7 +2,7 @@
 using System.Windows.Forms;
 using SimpleParser.Parser;
 
-namespace SimpleParser
+namespace SimpleParser.WinFormsApp
 {
   public partial class MainForm : Form
   {

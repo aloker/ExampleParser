@@ -21,7 +21,7 @@ tokens{
 @parser::namespace { SimpleParser.Parser }
 @lexer::namespace { SimpleParser.Parser }
 
-program	:	(expression (NEWLINE!)?)*  EOF!
+program	:	NEWLINE!* expression (NEWLINE! expression)* NEWLINE!* EOF
 	; 
 
 	

@@ -53,5 +53,10 @@ namespace SimpleParser.Parser
       variables.Add(name, variable);
       return variable;
     }
+
+    public int this[string variable]
+    {
+      get { return variables[variable].Value; }
+    }
   }
 }
