@@ -9,6 +9,7 @@ namespace SimpleParser
     private static void Main(string[] args)
     {
       const string source = @"
+a = 13;
 b = 6;
 foo =  (a + b) * 6; 
 ";
