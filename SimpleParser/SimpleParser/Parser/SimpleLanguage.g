@@ -5,6 +5,7 @@ options
 	language=CSharp2;
 	output=AST;
 	k=2;
+	ASTLabelType=CommonTree;
 }
 
 tokens{

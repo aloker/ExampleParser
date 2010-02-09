@@ -1,4 +1,4 @@
-// $ANTLR 3.1.2 E:\\Projects\\my\\parser\\SimpleParser\\SimpleParser\\Parser\\SimpleLanguage.g 2010-02-09 14:34:40
+// $ANTLR 3.1.2 E:\\Projects\\my\\parser\\SimpleParser\\SimpleParser\\Parser\\SimpleLanguage.g 2010-02-09 15:04:24
 
 // The variable 'variable' is assigned but its value is never used.
 #pragma warning disable 168, 219
@@ -96,39 +96,39 @@ public partial class SimpleLanguageParser : Parser
 
     public class program_return : ParserRuleReturnScope
     {
-        private object tree;
+        private CommonTree tree;
         override public object Tree
         {
         	get { return tree; }
-        	set { tree = (object) value; }
+        	set { tree = (CommonTree) value; }
         }
     };
 
     // $ANTLR start "program"
-    // E:\\Projects\\my\\parser\\SimpleParser\\SimpleParser\\Parser\\SimpleLanguage.g:23:1: program : ( expression ( NEWLINE )? )* EOF ;
+    // E:\\Projects\\my\\parser\\SimpleParser\\SimpleParser\\Parser\\SimpleLanguage.g:24:1: program : ( expression ( NEWLINE )? )* EOF ;
     public SimpleLanguageParser.program_return program() // throws RecognitionException [1]
     {   
         SimpleLanguageParser.program_return retval = new SimpleLanguageParser.program_return();
         retval.Start = input.LT(1);
 
-        object root_0 = null;
+        CommonTree root_0 = null;
 
         IToken NEWLINE2 = null;
         IToken EOF3 = null;
         SimpleLanguageParser.expression_return expression1 = default(SimpleLanguageParser.expression_return);
 
 
-        object NEWLINE2_tree=null;
-        object EOF3_tree=null;
+        CommonTree NEWLINE2_tree=null;
+        CommonTree EOF3_tree=null;
 
         try 
     	{
-            // E:\\Projects\\my\\parser\\SimpleParser\\SimpleParser\\Parser\\SimpleLanguage.g:23:9: ( ( expression ( NEWLINE )? )* EOF )
-            // E:\\Projects\\my\\parser\\SimpleParser\\SimpleParser\\Parser\\SimpleLanguage.g:23:11: ( expression ( NEWLINE )? )* EOF
+            // E:\\Projects\\my\\parser\\SimpleParser\\SimpleParser\\Parser\\SimpleLanguage.g:24:9: ( ( expression ( NEWLINE )? )* EOF )
+            // E:\\Projects\\my\\parser\\SimpleParser\\SimpleParser\\Parser\\SimpleLanguage.g:24:11: ( expression ( NEWLINE )? )* EOF
             {
-            	root_0 = (object)adaptor.GetNilNode();
+            	root_0 = (CommonTree)adaptor.GetNilNode();
 
-            	// E:\\Projects\\my\\parser\\SimpleParser\\SimpleParser\\Parser\\SimpleLanguage.g:23:11: ( expression ( NEWLINE )? )*
+            	// E:\\Projects\\my\\parser\\SimpleParser\\SimpleParser\\Parser\\SimpleLanguage.g:24:11: ( expression ( NEWLINE )? )*
             	do 
             	{
             	    int alt2 = 2;
@@ -143,14 +143,14 @@ public partial class SimpleLanguageParser : Parser
             	    switch (alt2) 
             		{
             			case 1 :
-            			    // E:\\Projects\\my\\parser\\SimpleParser\\SimpleParser\\Parser\\SimpleLanguage.g:23:12: expression ( NEWLINE )?
+            			    // E:\\Projects\\my\\parser\\SimpleParser\\SimpleParser\\Parser\\SimpleLanguage.g:24:12: expression ( NEWLINE )?
             			    {
-            			    	PushFollow(FOLLOW_expression_in_program99);
+            			    	PushFollow(FOLLOW_expression_in_program105);
             			    	expression1 = expression();
             			    	state.followingStackPointer--;
 
             			    	adaptor.AddChild(root_0, expression1.Tree);
-            			    	// E:\\Projects\\my\\parser\\SimpleParser\\SimpleParser\\Parser\\SimpleLanguage.g:23:23: ( NEWLINE )?
+            			    	// E:\\Projects\\my\\parser\\SimpleParser\\SimpleParser\\Parser\\SimpleLanguage.g:24:23: ( NEWLINE )?
             			    	int alt1 = 2;
             			    	int LA1_0 = input.LA(1);
 
@@ -161,9 +161,9 @@ public partial class SimpleLanguageParser : Parser
             			    	switch (alt1) 
             			    	{
             			    	    case 1 :
-            			    	        // E:\\Projects\\my\\parser\\SimpleParser\\SimpleParser\\Parser\\SimpleLanguage.g:23:24: NEWLINE
+            			    	        // E:\\Projects\\my\\parser\\SimpleParser\\SimpleParser\\Parser\\SimpleLanguage.g:24:24: NEWLINE
             			    	        {
-            			    	        	NEWLINE2=(IToken)Match(input,NEWLINE,FOLLOW_NEWLINE_in_program102); 
+            			    	        	NEWLINE2=(IToken)Match(input,NEWLINE,FOLLOW_NEWLINE_in_program108); 
 
             			    	        }
             			    	        break;
@@ -182,13 +182,13 @@ public partial class SimpleLanguageParser : Parser
             	loop2:
             		;	// Stops C# compiler whining that label 'loop2' has no statements
 
-            	EOF3=(IToken)Match(input,EOF,FOLLOW_EOF_in_program110); 
+            	EOF3=(IToken)Match(input,EOF,FOLLOW_EOF_in_program116); 
 
             }
 
             retval.Stop = input.LT(-1);
 
-            	retval.Tree = (object)adaptor.RulePostProcessing(root_0);
+            	retval.Tree = (CommonTree)adaptor.RulePostProcessing(root_0);
             	adaptor.SetTokenBoundaries(retval.Tree, (IToken) retval.Start, (IToken) retval.Stop);
         }
         catch (RecognitionException re) 
@@ -196,7 +196,7 @@ public partial class SimpleLanguageParser : Parser
             ReportError(re);
             Recover(input,re);
     	// Conversion of the second argument necessary, but harmless
-    	retval.Tree = (object)adaptor.ErrorNode(input, (IToken) retval.Start, input.LT(-1), re);
+    	retval.Tree = (CommonTree)adaptor.ErrorNode(input, (IToken) retval.Start, input.LT(-1), re);
 
         }
         finally 
@@ -208,22 +208,22 @@ public partial class SimpleLanguageParser : Parser
 
     public class expression_return : ParserRuleReturnScope
     {
-        private object tree;
+        private CommonTree tree;
         override public object Tree
         {
         	get { return tree; }
-        	set { tree = (object) value; }
+        	set { tree = (CommonTree) value; }
         }
     };
 
     // $ANTLR start "expression"
-    // E:\\Projects\\my\\parser\\SimpleParser\\SimpleParser\\Parser\\SimpleLanguage.g:27:1: expression : ( assignment | ( term ( ( PLUS | MINUS ) term )* ) );
+    // E:\\Projects\\my\\parser\\SimpleParser\\SimpleParser\\Parser\\SimpleLanguage.g:28:1: expression : ( assignment | ( term ( ( PLUS | MINUS ) term )* ) );
     public SimpleLanguageParser.expression_return expression() // throws RecognitionException [1]
     {   
         SimpleLanguageParser.expression_return retval = new SimpleLanguageParser.expression_return();
         retval.Start = input.LT(1);
 
-        object root_0 = null;
+        CommonTree root_0 = null;
 
         IToken PLUS6 = null;
         IToken MINUS7 = null;
@@ -234,22 +234,22 @@ public partial class SimpleLanguageParser : Parser
         SimpleLanguageParser.term_return term8 = default(SimpleLanguageParser.term_return);
 
 
-        object PLUS6_tree=null;
-        object MINUS7_tree=null;
+        CommonTree PLUS6_tree=null;
+        CommonTree MINUS7_tree=null;
 
         try 
     	{
-            // E:\\Projects\\my\\parser\\SimpleParser\\SimpleParser\\Parser\\SimpleLanguage.g:28:2: ( assignment | ( term ( ( PLUS | MINUS ) term )* ) )
+            // E:\\Projects\\my\\parser\\SimpleParser\\SimpleParser\\Parser\\SimpleLanguage.g:29:2: ( assignment | ( term ( ( PLUS | MINUS ) term )* ) )
             int alt5 = 2;
             alt5 = dfa5.Predict(input);
             switch (alt5) 
             {
                 case 1 :
-                    // E:\\Projects\\my\\parser\\SimpleParser\\SimpleParser\\Parser\\SimpleLanguage.g:28:4: assignment
+                    // E:\\Projects\\my\\parser\\SimpleParser\\SimpleParser\\Parser\\SimpleLanguage.g:29:4: assignment
                     {
-                    	root_0 = (object)adaptor.GetNilNode();
+                    	root_0 = (CommonTree)adaptor.GetNilNode();
 
-                    	PushFollow(FOLLOW_assignment_in_expression125);
+                    	PushFollow(FOLLOW_assignment_in_expression131);
                     	assignment4 = assignment();
                     	state.followingStackPointer--;
 
@@ -258,19 +258,19 @@ public partial class SimpleLanguageParser : Parser
                     }
                     break;
                 case 2 :
-                    // E:\\Projects\\my\\parser\\SimpleParser\\SimpleParser\\Parser\\SimpleLanguage.g:28:17: ( term ( ( PLUS | MINUS ) term )* )
+                    // E:\\Projects\\my\\parser\\SimpleParser\\SimpleParser\\Parser\\SimpleLanguage.g:29:17: ( term ( ( PLUS | MINUS ) term )* )
                     {
-                    	root_0 = (object)adaptor.GetNilNode();
+                    	root_0 = (CommonTree)adaptor.GetNilNode();
 
-                    	// E:\\Projects\\my\\parser\\SimpleParser\\SimpleParser\\Parser\\SimpleLanguage.g:28:17: ( term ( ( PLUS | MINUS ) term )* )
-                    	// E:\\Projects\\my\\parser\\SimpleParser\\SimpleParser\\Parser\\SimpleLanguage.g:28:18: term ( ( PLUS | MINUS ) term )*
+                    	// E:\\Projects\\my\\parser\\SimpleParser\\SimpleParser\\Parser\\SimpleLanguage.g:29:17: ( term ( ( PLUS | MINUS ) term )* )
+                    	// E:\\Projects\\my\\parser\\SimpleParser\\SimpleParser\\Parser\\SimpleLanguage.g:29:18: term ( ( PLUS | MINUS ) term )*
                     	{
-                    		PushFollow(FOLLOW_term_in_expression130);
+                    		PushFollow(FOLLOW_term_in_expression136);
                     		term5 = term();
                     		state.followingStackPointer--;
 
                     		adaptor.AddChild(root_0, term5.Tree);
-                    		// E:\\Projects\\my\\parser\\SimpleParser\\SimpleParser\\Parser\\SimpleLanguage.g:28:23: ( ( PLUS | MINUS ) term )*
+                    		// E:\\Projects\\my\\parser\\SimpleParser\\SimpleParser\\Parser\\SimpleLanguage.g:29:23: ( ( PLUS | MINUS ) term )*
                     		do 
                     		{
                     		    int alt4 = 2;
@@ -285,9 +285,9 @@ public partial class SimpleLanguageParser : Parser
                     		    switch (alt4) 
                     			{
                     				case 1 :
-                    				    // E:\\Projects\\my\\parser\\SimpleParser\\SimpleParser\\Parser\\SimpleLanguage.g:28:24: ( PLUS | MINUS ) term
+                    				    // E:\\Projects\\my\\parser\\SimpleParser\\SimpleParser\\Parser\\SimpleLanguage.g:29:24: ( PLUS | MINUS ) term
                     				    {
-                    				    	// E:\\Projects\\my\\parser\\SimpleParser\\SimpleParser\\Parser\\SimpleLanguage.g:28:24: ( PLUS | MINUS )
+                    				    	// E:\\Projects\\my\\parser\\SimpleParser\\SimpleParser\\Parser\\SimpleLanguage.g:29:24: ( PLUS | MINUS )
                     				    	int alt3 = 2;
                     				    	int LA3_0 = input.LA(1);
 
@@ -309,21 +309,21 @@ public partial class SimpleLanguageParser : Parser
                     				    	switch (alt3) 
                     				    	{
                     				    	    case 1 :
-                    				    	        // E:\\Projects\\my\\parser\\SimpleParser\\SimpleParser\\Parser\\SimpleLanguage.g:28:25: PLUS
+                    				    	        // E:\\Projects\\my\\parser\\SimpleParser\\SimpleParser\\Parser\\SimpleLanguage.g:29:25: PLUS
                     				    	        {
-                    				    	        	PLUS6=(IToken)Match(input,PLUS,FOLLOW_PLUS_in_expression134); 
-                    				    	        		PLUS6_tree = (object)adaptor.Create(PLUS6);
-                    				    	        		root_0 = (object)adaptor.BecomeRoot(PLUS6_tree, root_0);
+                    				    	        	PLUS6=(IToken)Match(input,PLUS,FOLLOW_PLUS_in_expression140); 
+                    				    	        		PLUS6_tree = (CommonTree)adaptor.Create(PLUS6);
+                    				    	        		root_0 = (CommonTree)adaptor.BecomeRoot(PLUS6_tree, root_0);
 
 
                     				    	        }
                     				    	        break;
                     				    	    case 2 :
-                    				    	        // E:\\Projects\\my\\parser\\SimpleParser\\SimpleParser\\Parser\\SimpleLanguage.g:28:31: MINUS
+                    				    	        // E:\\Projects\\my\\parser\\SimpleParser\\SimpleParser\\Parser\\SimpleLanguage.g:29:31: MINUS
                     				    	        {
-                    				    	        	MINUS7=(IToken)Match(input,MINUS,FOLLOW_MINUS_in_expression137); 
-                    				    	        		MINUS7_tree = (object)adaptor.Create(MINUS7);
-                    				    	        		root_0 = (object)adaptor.BecomeRoot(MINUS7_tree, root_0);
+                    				    	        	MINUS7=(IToken)Match(input,MINUS,FOLLOW_MINUS_in_expression143); 
+                    				    	        		MINUS7_tree = (CommonTree)adaptor.Create(MINUS7);
+                    				    	        		root_0 = (CommonTree)adaptor.BecomeRoot(MINUS7_tree, root_0);
 
 
                     				    	        }
@@ -331,7 +331,7 @@ public partial class SimpleLanguageParser : Parser
 
                     				    	}
 
-                    				    	PushFollow(FOLLOW_term_in_expression141);
+                    				    	PushFollow(FOLLOW_term_in_expression147);
                     				    	term8 = term();
                     				    	state.followingStackPointer--;
 
@@ -358,7 +358,7 @@ public partial class SimpleLanguageParser : Parser
             }
             retval.Stop = input.LT(-1);
 
-            	retval.Tree = (object)adaptor.RulePostProcessing(root_0);
+            	retval.Tree = (CommonTree)adaptor.RulePostProcessing(root_0);
             	adaptor.SetTokenBoundaries(retval.Tree, (IToken) retval.Start, (IToken) retval.Stop);
         }
         catch (RecognitionException re) 
@@ -366,7 +366,7 @@ public partial class SimpleLanguageParser : Parser
             ReportError(re);
             Recover(input,re);
     	// Conversion of the second argument necessary, but harmless
-    	retval.Tree = (object)adaptor.ErrorNode(input, (IToken) retval.Start, input.LT(-1), re);
+    	retval.Tree = (CommonTree)adaptor.ErrorNode(input, (IToken) retval.Start, input.LT(-1), re);
 
         }
         finally 
@@ -378,47 +378,47 @@ public partial class SimpleLanguageParser : Parser
 
     public class assignment_return : ParserRuleReturnScope
     {
-        private object tree;
+        private CommonTree tree;
         override public object Tree
         {
         	get { return tree; }
-        	set { tree = (object) value; }
+        	set { tree = (CommonTree) value; }
         }
     };
 
     // $ANTLR start "assignment"
-    // E:\\Projects\\my\\parser\\SimpleParser\\SimpleParser\\Parser\\SimpleLanguage.g:31:1: assignment : IDENTIFIER ASSIGN expression ;
+    // E:\\Projects\\my\\parser\\SimpleParser\\SimpleParser\\Parser\\SimpleLanguage.g:32:1: assignment : IDENTIFIER ASSIGN expression ;
     public SimpleLanguageParser.assignment_return assignment() // throws RecognitionException [1]
     {   
         SimpleLanguageParser.assignment_return retval = new SimpleLanguageParser.assignment_return();
         retval.Start = input.LT(1);
 
-        object root_0 = null;
+        CommonTree root_0 = null;
 
         IToken IDENTIFIER9 = null;
         IToken ASSIGN10 = null;
         SimpleLanguageParser.expression_return expression11 = default(SimpleLanguageParser.expression_return);
 
 
-        object IDENTIFIER9_tree=null;
-        object ASSIGN10_tree=null;
+        CommonTree IDENTIFIER9_tree=null;
+        CommonTree ASSIGN10_tree=null;
 
         try 
     	{
-            // E:\\Projects\\my\\parser\\SimpleParser\\SimpleParser\\Parser\\SimpleLanguage.g:32:2: ( IDENTIFIER ASSIGN expression )
-            // E:\\Projects\\my\\parser\\SimpleParser\\SimpleParser\\Parser\\SimpleLanguage.g:32:4: IDENTIFIER ASSIGN expression
+            // E:\\Projects\\my\\parser\\SimpleParser\\SimpleParser\\Parser\\SimpleLanguage.g:33:2: ( IDENTIFIER ASSIGN expression )
+            // E:\\Projects\\my\\parser\\SimpleParser\\SimpleParser\\Parser\\SimpleLanguage.g:33:4: IDENTIFIER ASSIGN expression
             {
-            	root_0 = (object)adaptor.GetNilNode();
+            	root_0 = (CommonTree)adaptor.GetNilNode();
 
-            	IDENTIFIER9=(IToken)Match(input,IDENTIFIER,FOLLOW_IDENTIFIER_in_assignment156); 
-            		IDENTIFIER9_tree = (object)adaptor.Create(IDENTIFIER9);
+            	IDENTIFIER9=(IToken)Match(input,IDENTIFIER,FOLLOW_IDENTIFIER_in_assignment162); 
+            		IDENTIFIER9_tree = (CommonTree)adaptor.Create(IDENTIFIER9);
             		adaptor.AddChild(root_0, IDENTIFIER9_tree);
 
-            	ASSIGN10=(IToken)Match(input,ASSIGN,FOLLOW_ASSIGN_in_assignment158); 
-            		ASSIGN10_tree = (object)adaptor.Create(ASSIGN10);
-            		root_0 = (object)adaptor.BecomeRoot(ASSIGN10_tree, root_0);
+            	ASSIGN10=(IToken)Match(input,ASSIGN,FOLLOW_ASSIGN_in_assignment164); 
+            		ASSIGN10_tree = (CommonTree)adaptor.Create(ASSIGN10);
+            		root_0 = (CommonTree)adaptor.BecomeRoot(ASSIGN10_tree, root_0);
 
-            	PushFollow(FOLLOW_expression_in_assignment161);
+            	PushFollow(FOLLOW_expression_in_assignment167);
             	expression11 = expression();
             	state.followingStackPointer--;
 
@@ -428,7 +428,7 @@ public partial class SimpleLanguageParser : Parser
 
             retval.Stop = input.LT(-1);
 
-            	retval.Tree = (object)adaptor.RulePostProcessing(root_0);
+            	retval.Tree = (CommonTree)adaptor.RulePostProcessing(root_0);
             	adaptor.SetTokenBoundaries(retval.Tree, (IToken) retval.Start, (IToken) retval.Stop);
         }
         catch (RecognitionException re) 
@@ -436,7 +436,7 @@ public partial class SimpleLanguageParser : Parser
             ReportError(re);
             Recover(input,re);
     	// Conversion of the second argument necessary, but harmless
-    	retval.Tree = (object)adaptor.ErrorNode(input, (IToken) retval.Start, input.LT(-1), re);
+    	retval.Tree = (CommonTree)adaptor.ErrorNode(input, (IToken) retval.Start, input.LT(-1), re);
 
         }
         finally 
@@ -448,22 +448,22 @@ public partial class SimpleLanguageParser : Parser
 
     public class term_return : ParserRuleReturnScope
     {
-        private object tree;
+        private CommonTree tree;
         override public object Tree
         {
         	get { return tree; }
-        	set { tree = (object) value; }
+        	set { tree = (CommonTree) value; }
         }
     };
 
     // $ANTLR start "term"
-    // E:\\Projects\\my\\parser\\SimpleParser\\SimpleParser\\Parser\\SimpleLanguage.g:35:1: term : value ( ( MULT | DIV | ) value )* ;
+    // E:\\Projects\\my\\parser\\SimpleParser\\SimpleParser\\Parser\\SimpleLanguage.g:36:1: term : value ( ( MULT | DIV | ) value )* ;
     public SimpleLanguageParser.term_return term() // throws RecognitionException [1]
     {   
         SimpleLanguageParser.term_return retval = new SimpleLanguageParser.term_return();
         retval.Start = input.LT(1);
 
-        object root_0 = null;
+        CommonTree root_0 = null;
 
         IToken MULT13 = null;
         IToken DIV14 = null;
@@ -472,22 +472,22 @@ public partial class SimpleLanguageParser : Parser
         SimpleLanguageParser.value_return value15 = default(SimpleLanguageParser.value_return);
 
 
-        object MULT13_tree=null;
-        object DIV14_tree=null;
+        CommonTree MULT13_tree=null;
+        CommonTree DIV14_tree=null;
 
         try 
     	{
-            // E:\\Projects\\my\\parser\\SimpleParser\\SimpleParser\\Parser\\SimpleLanguage.g:36:2: ( value ( ( MULT | DIV | ) value )* )
-            // E:\\Projects\\my\\parser\\SimpleParser\\SimpleParser\\Parser\\SimpleLanguage.g:36:4: value ( ( MULT | DIV | ) value )*
+            // E:\\Projects\\my\\parser\\SimpleParser\\SimpleParser\\Parser\\SimpleLanguage.g:37:2: ( value ( ( MULT | DIV | ) value )* )
+            // E:\\Projects\\my\\parser\\SimpleParser\\SimpleParser\\Parser\\SimpleLanguage.g:37:4: value ( ( MULT | DIV | ) value )*
             {
-            	root_0 = (object)adaptor.GetNilNode();
+            	root_0 = (CommonTree)adaptor.GetNilNode();
 
-            	PushFollow(FOLLOW_value_in_term174);
+            	PushFollow(FOLLOW_value_in_term180);
             	value12 = value();
             	state.followingStackPointer--;
 
             	adaptor.AddChild(root_0, value12.Tree);
-            	// E:\\Projects\\my\\parser\\SimpleParser\\SimpleParser\\Parser\\SimpleLanguage.g:36:10: ( ( MULT | DIV | ) value )*
+            	// E:\\Projects\\my\\parser\\SimpleParser\\SimpleParser\\Parser\\SimpleLanguage.g:37:10: ( ( MULT | DIV | ) value )*
             	do 
             	{
             	    int alt7 = 2;
@@ -495,9 +495,9 @@ public partial class SimpleLanguageParser : Parser
             	    switch (alt7) 
             		{
             			case 1 :
-            			    // E:\\Projects\\my\\parser\\SimpleParser\\SimpleParser\\Parser\\SimpleLanguage.g:36:11: ( MULT | DIV | ) value
+            			    // E:\\Projects\\my\\parser\\SimpleParser\\SimpleParser\\Parser\\SimpleLanguage.g:37:11: ( MULT | DIV | ) value
             			    {
-            			    	// E:\\Projects\\my\\parser\\SimpleParser\\SimpleParser\\Parser\\SimpleLanguage.g:36:11: ( MULT | DIV | )
+            			    	// E:\\Projects\\my\\parser\\SimpleParser\\SimpleParser\\Parser\\SimpleLanguage.g:37:11: ( MULT | DIV | )
             			    	int alt6 = 3;
             			    	switch ( input.LA(1) ) 
             			    	{
@@ -528,34 +528,34 @@ public partial class SimpleLanguageParser : Parser
             			    	switch (alt6) 
             			    	{
             			    	    case 1 :
-            			    	        // E:\\Projects\\my\\parser\\SimpleParser\\SimpleParser\\Parser\\SimpleLanguage.g:36:12: MULT
+            			    	        // E:\\Projects\\my\\parser\\SimpleParser\\SimpleParser\\Parser\\SimpleLanguage.g:37:12: MULT
             			    	        {
-            			    	        	MULT13=(IToken)Match(input,MULT,FOLLOW_MULT_in_term178); 
-            			    	        		MULT13_tree = (object)adaptor.Create(MULT13);
-            			    	        		root_0 = (object)adaptor.BecomeRoot(MULT13_tree, root_0);
+            			    	        	MULT13=(IToken)Match(input,MULT,FOLLOW_MULT_in_term184); 
+            			    	        		MULT13_tree = (CommonTree)adaptor.Create(MULT13);
+            			    	        		root_0 = (CommonTree)adaptor.BecomeRoot(MULT13_tree, root_0);
 
 
             			    	        }
             			    	        break;
             			    	    case 2 :
-            			    	        // E:\\Projects\\my\\parser\\SimpleParser\\SimpleParser\\Parser\\SimpleLanguage.g:36:18: DIV
+            			    	        // E:\\Projects\\my\\parser\\SimpleParser\\SimpleParser\\Parser\\SimpleLanguage.g:37:18: DIV
             			    	        {
-            			    	        	DIV14=(IToken)Match(input,DIV,FOLLOW_DIV_in_term181); 
-            			    	        		DIV14_tree = (object)adaptor.Create(DIV14);
-            			    	        		root_0 = (object)adaptor.BecomeRoot(DIV14_tree, root_0);
+            			    	        	DIV14=(IToken)Match(input,DIV,FOLLOW_DIV_in_term187); 
+            			    	        		DIV14_tree = (CommonTree)adaptor.Create(DIV14);
+            			    	        		root_0 = (CommonTree)adaptor.BecomeRoot(DIV14_tree, root_0);
 
 
             			    	        }
             			    	        break;
             			    	    case 3 :
-            			    	        // E:\\Projects\\my\\parser\\SimpleParser\\SimpleParser\\Parser\\SimpleLanguage.g:36:23: 
+            			    	        // E:\\Projects\\my\\parser\\SimpleParser\\SimpleParser\\Parser\\SimpleLanguage.g:37:23: 
             			    	        {
             			    	        }
             			    	        break;
 
             			    	}
 
-            			    	PushFollow(FOLLOW_value_in_term186);
+            			    	PushFollow(FOLLOW_value_in_term192);
             			    	value15 = value();
             			    	state.followingStackPointer--;
 
@@ -577,7 +577,7 @@ public partial class SimpleLanguageParser : Parser
 
             retval.Stop = input.LT(-1);
 
-            	retval.Tree = (object)adaptor.RulePostProcessing(root_0);
+            	retval.Tree = (CommonTree)adaptor.RulePostProcessing(root_0);
             	adaptor.SetTokenBoundaries(retval.Tree, (IToken) retval.Start, (IToken) retval.Stop);
         }
         catch (RecognitionException re) 
@@ -585,7 +585,7 @@ public partial class SimpleLanguageParser : Parser
             ReportError(re);
             Recover(input,re);
     	// Conversion of the second argument necessary, but harmless
-    	retval.Tree = (object)adaptor.ErrorNode(input, (IToken) retval.Start, input.LT(-1), re);
+    	retval.Tree = (CommonTree)adaptor.ErrorNode(input, (IToken) retval.Start, input.LT(-1), re);
 
         }
         finally 
@@ -597,22 +597,22 @@ public partial class SimpleLanguageParser : Parser
 
     public class value_return : ParserRuleReturnScope
     {
-        private object tree;
+        private CommonTree tree;
         override public object Tree
         {
         	get { return tree; }
-        	set { tree = (object) value; }
+        	set { tree = (CommonTree) value; }
         }
     };
 
     // $ANTLR start "value"
-    // E:\\Projects\\my\\parser\\SimpleParser\\SimpleParser\\Parser\\SimpleLanguage.g:39:1: value : ( ( LEFTPAREN expression RIGHTPAREN ) | NUMBER | IDENTIFIER );
+    // E:\\Projects\\my\\parser\\SimpleParser\\SimpleParser\\Parser\\SimpleLanguage.g:40:1: value : ( ( LEFTPAREN expression RIGHTPAREN ) | NUMBER | IDENTIFIER );
     public SimpleLanguageParser.value_return value() // throws RecognitionException [1]
     {   
         SimpleLanguageParser.value_return retval = new SimpleLanguageParser.value_return();
         retval.Start = input.LT(1);
 
-        object root_0 = null;
+        CommonTree root_0 = null;
 
         IToken LEFTPAREN16 = null;
         IToken RIGHTPAREN18 = null;
@@ -621,14 +621,14 @@ public partial class SimpleLanguageParser : Parser
         SimpleLanguageParser.expression_return expression17 = default(SimpleLanguageParser.expression_return);
 
 
-        object LEFTPAREN16_tree=null;
-        object RIGHTPAREN18_tree=null;
-        object NUMBER19_tree=null;
-        object IDENTIFIER20_tree=null;
+        CommonTree LEFTPAREN16_tree=null;
+        CommonTree RIGHTPAREN18_tree=null;
+        CommonTree NUMBER19_tree=null;
+        CommonTree IDENTIFIER20_tree=null;
 
         try 
     	{
-            // E:\\Projects\\my\\parser\\SimpleParser\\SimpleParser\\Parser\\SimpleLanguage.g:40:2: ( ( LEFTPAREN expression RIGHTPAREN ) | NUMBER | IDENTIFIER )
+            // E:\\Projects\\my\\parser\\SimpleParser\\SimpleParser\\Parser\\SimpleLanguage.g:41:2: ( ( LEFTPAREN expression RIGHTPAREN ) | NUMBER | IDENTIFIER )
             int alt8 = 3;
             switch ( input.LA(1) ) 
             {
@@ -657,20 +657,20 @@ public partial class SimpleLanguageParser : Parser
             switch (alt8) 
             {
                 case 1 :
-                    // E:\\Projects\\my\\parser\\SimpleParser\\SimpleParser\\Parser\\SimpleLanguage.g:40:4: ( LEFTPAREN expression RIGHTPAREN )
+                    // E:\\Projects\\my\\parser\\SimpleParser\\SimpleParser\\Parser\\SimpleLanguage.g:41:4: ( LEFTPAREN expression RIGHTPAREN )
                     {
-                    	root_0 = (object)adaptor.GetNilNode();
+                    	root_0 = (CommonTree)adaptor.GetNilNode();
 
-                    	// E:\\Projects\\my\\parser\\SimpleParser\\SimpleParser\\Parser\\SimpleLanguage.g:40:4: ( LEFTPAREN expression RIGHTPAREN )
-                    	// E:\\Projects\\my\\parser\\SimpleParser\\SimpleParser\\Parser\\SimpleLanguage.g:40:5: LEFTPAREN expression RIGHTPAREN
+                    	// E:\\Projects\\my\\parser\\SimpleParser\\SimpleParser\\Parser\\SimpleLanguage.g:41:4: ( LEFTPAREN expression RIGHTPAREN )
+                    	// E:\\Projects\\my\\parser\\SimpleParser\\SimpleParser\\Parser\\SimpleLanguage.g:41:5: LEFTPAREN expression RIGHTPAREN
                     	{
-                    		LEFTPAREN16=(IToken)Match(input,LEFTPAREN,FOLLOW_LEFTPAREN_in_value201); 
-                    		PushFollow(FOLLOW_expression_in_value204);
+                    		LEFTPAREN16=(IToken)Match(input,LEFTPAREN,FOLLOW_LEFTPAREN_in_value207); 
+                    		PushFollow(FOLLOW_expression_in_value210);
                     		expression17 = expression();
                     		state.followingStackPointer--;
 
                     		adaptor.AddChild(root_0, expression17.Tree);
-                    		RIGHTPAREN18=(IToken)Match(input,RIGHTPAREN,FOLLOW_RIGHTPAREN_in_value206); 
+                    		RIGHTPAREN18=(IToken)Match(input,RIGHTPAREN,FOLLOW_RIGHTPAREN_in_value212); 
 
                     	}
 
@@ -678,24 +678,24 @@ public partial class SimpleLanguageParser : Parser
                     }
                     break;
                 case 2 :
-                    // E:\\Projects\\my\\parser\\SimpleParser\\SimpleParser\\Parser\\SimpleLanguage.g:40:42: NUMBER
+                    // E:\\Projects\\my\\parser\\SimpleParser\\SimpleParser\\Parser\\SimpleLanguage.g:41:42: NUMBER
                     {
-                    	root_0 = (object)adaptor.GetNilNode();
+                    	root_0 = (CommonTree)adaptor.GetNilNode();
 
-                    	NUMBER19=(IToken)Match(input,NUMBER,FOLLOW_NUMBER_in_value212); 
-                    		NUMBER19_tree = (object)adaptor.Create(NUMBER19);
+                    	NUMBER19=(IToken)Match(input,NUMBER,FOLLOW_NUMBER_in_value218); 
+                    		NUMBER19_tree = (CommonTree)adaptor.Create(NUMBER19);
                     		adaptor.AddChild(root_0, NUMBER19_tree);
 
 
                     }
                     break;
                 case 3 :
-                    // E:\\Projects\\my\\parser\\SimpleParser\\SimpleParser\\Parser\\SimpleLanguage.g:40:51: IDENTIFIER
+                    // E:\\Projects\\my\\parser\\SimpleParser\\SimpleParser\\Parser\\SimpleLanguage.g:41:51: IDENTIFIER
                     {
-                    	root_0 = (object)adaptor.GetNilNode();
+                    	root_0 = (CommonTree)adaptor.GetNilNode();
 
-                    	IDENTIFIER20=(IToken)Match(input,IDENTIFIER,FOLLOW_IDENTIFIER_in_value216); 
-                    		IDENTIFIER20_tree = (object)adaptor.Create(IDENTIFIER20);
+                    	IDENTIFIER20=(IToken)Match(input,IDENTIFIER,FOLLOW_IDENTIFIER_in_value222); 
+                    		IDENTIFIER20_tree = (CommonTree)adaptor.Create(IDENTIFIER20);
                     		adaptor.AddChild(root_0, IDENTIFIER20_tree);
 
 
@@ -705,7 +705,7 @@ public partial class SimpleLanguageParser : Parser
             }
             retval.Stop = input.LT(-1);
 
-            	retval.Tree = (object)adaptor.RulePostProcessing(root_0);
+            	retval.Tree = (CommonTree)adaptor.RulePostProcessing(root_0);
             	adaptor.SetTokenBoundaries(retval.Tree, (IToken) retval.Start, (IToken) retval.Stop);
         }
         catch (RecognitionException re) 
@@ -713,7 +713,7 @@ public partial class SimpleLanguageParser : Parser
             ReportError(re);
             Recover(input,re);
     	// Conversion of the second argument necessary, but harmless
-    	retval.Tree = (object)adaptor.ErrorNode(input, (IToken) retval.Start, input.LT(-1), re);
+    	retval.Tree = (CommonTree)adaptor.ErrorNode(input, (IToken) retval.Start, input.LT(-1), re);
 
         }
         finally 
@@ -792,7 +792,7 @@ public partial class SimpleLanguageParser : Parser
 
         override public string Description
         {
-            get { return "27:1: expression : ( assignment | ( term ( ( PLUS | MINUS ) term )* ) );"; }
+            get { return "28:1: expression : ( assignment | ( term ( ( PLUS | MINUS ) term )* ) );"; }
         }
 
     }
@@ -853,33 +853,33 @@ public partial class SimpleLanguageParser : Parser
 
         override public string Description
         {
-            get { return "()* loopback of 36:10: ( ( MULT | DIV | ) value )*"; }
+            get { return "()* loopback of 37:10: ( ( MULT | DIV | ) value )*"; }
         }
 
     }
 
  
 
-    public static readonly BitSet FOLLOW_expression_in_program99 = new BitSet(new ulong[]{0x0000000000003A00UL});
-    public static readonly BitSet FOLLOW_NEWLINE_in_program102 = new BitSet(new ulong[]{0x0000000000003A00UL});
-    public static readonly BitSet FOLLOW_EOF_in_program110 = new BitSet(new ulong[]{0x0000000000000002UL});
-    public static readonly BitSet FOLLOW_assignment_in_expression125 = new BitSet(new ulong[]{0x0000000000000002UL});
-    public static readonly BitSet FOLLOW_term_in_expression130 = new BitSet(new ulong[]{0x0000000000000032UL});
-    public static readonly BitSet FOLLOW_PLUS_in_expression134 = new BitSet(new ulong[]{0x0000000000003A00UL});
-    public static readonly BitSet FOLLOW_MINUS_in_expression137 = new BitSet(new ulong[]{0x0000000000003A00UL});
-    public static readonly BitSet FOLLOW_term_in_expression141 = new BitSet(new ulong[]{0x0000000000000032UL});
-    public static readonly BitSet FOLLOW_IDENTIFIER_in_assignment156 = new BitSet(new ulong[]{0x0000000000000100UL});
-    public static readonly BitSet FOLLOW_ASSIGN_in_assignment158 = new BitSet(new ulong[]{0x0000000000003A00UL});
-    public static readonly BitSet FOLLOW_expression_in_assignment161 = new BitSet(new ulong[]{0x0000000000000002UL});
-    public static readonly BitSet FOLLOW_value_in_term174 = new BitSet(new ulong[]{0x0000000000003AC2UL});
-    public static readonly BitSet FOLLOW_MULT_in_term178 = new BitSet(new ulong[]{0x0000000000003A00UL});
-    public static readonly BitSet FOLLOW_DIV_in_term181 = new BitSet(new ulong[]{0x0000000000003A00UL});
-    public static readonly BitSet FOLLOW_value_in_term186 = new BitSet(new ulong[]{0x0000000000003AC2UL});
-    public static readonly BitSet FOLLOW_LEFTPAREN_in_value201 = new BitSet(new ulong[]{0x0000000000003A00UL});
-    public static readonly BitSet FOLLOW_expression_in_value204 = new BitSet(new ulong[]{0x0000000000000400UL});
-    public static readonly BitSet FOLLOW_RIGHTPAREN_in_value206 = new BitSet(new ulong[]{0x0000000000000002UL});
-    public static readonly BitSet FOLLOW_NUMBER_in_value212 = new BitSet(new ulong[]{0x0000000000000002UL});
-    public static readonly BitSet FOLLOW_IDENTIFIER_in_value216 = new BitSet(new ulong[]{0x0000000000000002UL});
+    public static readonly BitSet FOLLOW_expression_in_program105 = new BitSet(new ulong[]{0x0000000000003A00UL});
+    public static readonly BitSet FOLLOW_NEWLINE_in_program108 = new BitSet(new ulong[]{0x0000000000003A00UL});
+    public static readonly BitSet FOLLOW_EOF_in_program116 = new BitSet(new ulong[]{0x0000000000000002UL});
+    public static readonly BitSet FOLLOW_assignment_in_expression131 = new BitSet(new ulong[]{0x0000000000000002UL});
+    public static readonly BitSet FOLLOW_term_in_expression136 = new BitSet(new ulong[]{0x0000000000000032UL});
+    public static readonly BitSet FOLLOW_PLUS_in_expression140 = new BitSet(new ulong[]{0x0000000000003A00UL});
+    public static readonly BitSet FOLLOW_MINUS_in_expression143 = new BitSet(new ulong[]{0x0000000000003A00UL});
+    public static readonly BitSet FOLLOW_term_in_expression147 = new BitSet(new ulong[]{0x0000000000000032UL});
+    public static readonly BitSet FOLLOW_IDENTIFIER_in_assignment162 = new BitSet(new ulong[]{0x0000000000000100UL});
+    public static readonly BitSet FOLLOW_ASSIGN_in_assignment164 = new BitSet(new ulong[]{0x0000000000003A00UL});
+    public static readonly BitSet FOLLOW_expression_in_assignment167 = new BitSet(new ulong[]{0x0000000000000002UL});
+    public static readonly BitSet FOLLOW_value_in_term180 = new BitSet(new ulong[]{0x0000000000003AC2UL});
+    public static readonly BitSet FOLLOW_MULT_in_term184 = new BitSet(new ulong[]{0x0000000000003A00UL});
+    public static readonly BitSet FOLLOW_DIV_in_term187 = new BitSet(new ulong[]{0x0000000000003A00UL});
+    public static readonly BitSet FOLLOW_value_in_term192 = new BitSet(new ulong[]{0x0000000000003AC2UL});
+    public static readonly BitSet FOLLOW_LEFTPAREN_in_value207 = new BitSet(new ulong[]{0x0000000000003A00UL});
+    public static readonly BitSet FOLLOW_expression_in_value210 = new BitSet(new ulong[]{0x0000000000000400UL});
+    public static readonly BitSet FOLLOW_RIGHTPAREN_in_value212 = new BitSet(new ulong[]{0x0000000000000002UL});
+    public static readonly BitSet FOLLOW_NUMBER_in_value218 = new BitSet(new ulong[]{0x0000000000000002UL});
+    public static readonly BitSet FOLLOW_IDENTIFIER_in_value222 = new BitSet(new ulong[]{0x0000000000000002UL});
 
 }
 }

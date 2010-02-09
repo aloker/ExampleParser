@@ -1,4 +1,4 @@
-// $ANTLR 3.1.2 E:\\Projects\\my\\parser\\SimpleParser\\SimpleParser\\Parser\\SimpleLanguage.g 2010-02-09 14:34:40
+// $ANTLR 3.1.2 E:\\Projects\\my\\parser\\SimpleParser\\SimpleParser\\Parser\\SimpleLanguage.g 2010-02-09 15:04:24
 
 // The variable 'variable' is assigned but its value is never used.
 #pragma warning disable 168, 219
@@ -221,10 +221,10 @@ public partial class SimpleLanguageLexer : Lexer {
     		{
             int _type = NUMBER;
     	int _channel = DEFAULT_TOKEN_CHANNEL;
-            // E:\\Projects\\my\\parser\\SimpleParser\\SimpleParser\\Parser\\SimpleLanguage.g:45:8: ( ( DIGIT )+ )
-            // E:\\Projects\\my\\parser\\SimpleParser\\SimpleParser\\Parser\\SimpleLanguage.g:45:10: ( DIGIT )+
+            // E:\\Projects\\my\\parser\\SimpleParser\\SimpleParser\\Parser\\SimpleLanguage.g:46:8: ( ( DIGIT )+ )
+            // E:\\Projects\\my\\parser\\SimpleParser\\SimpleParser\\Parser\\SimpleLanguage.g:46:10: ( DIGIT )+
             {
-            	// E:\\Projects\\my\\parser\\SimpleParser\\SimpleParser\\Parser\\SimpleLanguage.g:45:10: ( DIGIT )+
+            	// E:\\Projects\\my\\parser\\SimpleParser\\SimpleParser\\Parser\\SimpleLanguage.g:46:10: ( DIGIT )+
             	int cnt1 = 0;
             	do 
             	{
@@ -240,7 +240,7 @@ public partial class SimpleLanguageLexer : Lexer {
             	    switch (alt1) 
             		{
             			case 1 :
-            			    // E:\\Projects\\my\\parser\\SimpleParser\\SimpleParser\\Parser\\SimpleLanguage.g:45:10: DIGIT
+            			    // E:\\Projects\\my\\parser\\SimpleParser\\SimpleParser\\Parser\\SimpleLanguage.g:46:10: DIGIT
             			    {
             			    	mDIGIT(); 
 
@@ -278,10 +278,10 @@ public partial class SimpleLanguageLexer : Lexer {
     		{
             int _type = NEWLINE;
     	int _channel = DEFAULT_TOKEN_CHANNEL;
-            // E:\\Projects\\my\\parser\\SimpleParser\\SimpleParser\\Parser\\SimpleLanguage.g:46:9: ( ( '\\r' | '\\n' )+ )
-            // E:\\Projects\\my\\parser\\SimpleParser\\SimpleParser\\Parser\\SimpleLanguage.g:46:12: ( '\\r' | '\\n' )+
+            // E:\\Projects\\my\\parser\\SimpleParser\\SimpleParser\\Parser\\SimpleLanguage.g:47:9: ( ( '\\r' | '\\n' )+ )
+            // E:\\Projects\\my\\parser\\SimpleParser\\SimpleParser\\Parser\\SimpleLanguage.g:47:12: ( '\\r' | '\\n' )+
             {
-            	// E:\\Projects\\my\\parser\\SimpleParser\\SimpleParser\\Parser\\SimpleLanguage.g:46:12: ( '\\r' | '\\n' )+
+            	// E:\\Projects\\my\\parser\\SimpleParser\\SimpleParser\\Parser\\SimpleLanguage.g:47:12: ( '\\r' | '\\n' )+
             	int cnt2 = 0;
             	do 
             	{
@@ -345,10 +345,10 @@ public partial class SimpleLanguageLexer : Lexer {
     		{
             int _type = WHITESPACE;
     	int _channel = DEFAULT_TOKEN_CHANNEL;
-            // E:\\Projects\\my\\parser\\SimpleParser\\SimpleParser\\Parser\\SimpleLanguage.g:48:2: ( ( '\\t' | ' ' | '\\u000C' )+ )
-            // E:\\Projects\\my\\parser\\SimpleParser\\SimpleParser\\Parser\\SimpleLanguage.g:48:4: ( '\\t' | ' ' | '\\u000C' )+
+            // E:\\Projects\\my\\parser\\SimpleParser\\SimpleParser\\Parser\\SimpleLanguage.g:49:2: ( ( '\\t' | ' ' | '\\u000C' )+ )
+            // E:\\Projects\\my\\parser\\SimpleParser\\SimpleParser\\Parser\\SimpleLanguage.g:49:4: ( '\\t' | ' ' | '\\u000C' )+
             {
-            	// E:\\Projects\\my\\parser\\SimpleParser\\SimpleParser\\Parser\\SimpleLanguage.g:48:4: ( '\\t' | ' ' | '\\u000C' )+
+            	// E:\\Projects\\my\\parser\\SimpleParser\\SimpleParser\\Parser\\SimpleLanguage.g:49:4: ( '\\t' | ' ' | '\\u000C' )+
             	int cnt3 = 0;
             	do 
             	{
@@ -413,11 +413,11 @@ public partial class SimpleLanguageLexer : Lexer {
     		{
             int _type = IDENTIFIER;
     	int _channel = DEFAULT_TOKEN_CHANNEL;
-            // E:\\Projects\\my\\parser\\SimpleParser\\SimpleParser\\Parser\\SimpleLanguage.g:50:2: ( LETTER ( DIGIT | LETTER )* )
-            // E:\\Projects\\my\\parser\\SimpleParser\\SimpleParser\\Parser\\SimpleLanguage.g:50:4: LETTER ( DIGIT | LETTER )*
+            // E:\\Projects\\my\\parser\\SimpleParser\\SimpleParser\\Parser\\SimpleLanguage.g:51:2: ( LETTER ( DIGIT | LETTER )* )
+            // E:\\Projects\\my\\parser\\SimpleParser\\SimpleParser\\Parser\\SimpleLanguage.g:51:4: LETTER ( DIGIT | LETTER )*
             {
             	mLETTER(); 
-            	// E:\\Projects\\my\\parser\\SimpleParser\\SimpleParser\\Parser\\SimpleLanguage.g:50:11: ( DIGIT | LETTER )*
+            	// E:\\Projects\\my\\parser\\SimpleParser\\SimpleParser\\Parser\\SimpleLanguage.g:51:11: ( DIGIT | LETTER )*
             	do 
             	{
             	    int alt4 = 2;
@@ -474,7 +474,7 @@ public partial class SimpleLanguageLexer : Lexer {
     {
     		try
     		{
-            // E:\\Projects\\my\\parser\\SimpleParser\\SimpleParser\\Parser\\SimpleLanguage.g:52:16: ( LOWER | UPPER )
+            // E:\\Projects\\my\\parser\\SimpleParser\\SimpleParser\\Parser\\SimpleLanguage.g:53:16: ( LOWER | UPPER )
             // E:\\Projects\\my\\parser\\SimpleParser\\SimpleParser\\Parser\\SimpleLanguage.g:
             {
             	if ( (input.LA(1) >= 'A' && input.LA(1) <= 'Z') || (input.LA(1) >= 'a' && input.LA(1) <= 'z') ) 
@@ -503,8 +503,8 @@ public partial class SimpleLanguageLexer : Lexer {
     {
     		try
     		{
-            // E:\\Projects\\my\\parser\\SimpleParser\\SimpleParser\\Parser\\SimpleLanguage.g:53:15: ( 'a' .. 'z' )
-            // E:\\Projects\\my\\parser\\SimpleParser\\SimpleParser\\Parser\\SimpleLanguage.g:53:17: 'a' .. 'z'
+            // E:\\Projects\\my\\parser\\SimpleParser\\SimpleParser\\Parser\\SimpleLanguage.g:54:15: ( 'a' .. 'z' )
+            // E:\\Projects\\my\\parser\\SimpleParser\\SimpleParser\\Parser\\SimpleLanguage.g:54:17: 'a' .. 'z'
             {
             	MatchRange('a','z'); 
 
@@ -522,8 +522,8 @@ public partial class SimpleLanguageLexer : Lexer {
     {
     		try
     		{
-            // E:\\Projects\\my\\parser\\SimpleParser\\SimpleParser\\Parser\\SimpleLanguage.g:54:15: ( 'A' .. 'Z' )
-            // E:\\Projects\\my\\parser\\SimpleParser\\SimpleParser\\Parser\\SimpleLanguage.g:54:17: 'A' .. 'Z'
+            // E:\\Projects\\my\\parser\\SimpleParser\\SimpleParser\\Parser\\SimpleLanguage.g:55:15: ( 'A' .. 'Z' )
+            // E:\\Projects\\my\\parser\\SimpleParser\\SimpleParser\\Parser\\SimpleLanguage.g:55:17: 'A' .. 'Z'
             {
             	MatchRange('A','Z'); 
 
@@ -541,8 +541,8 @@ public partial class SimpleLanguageLexer : Lexer {
     {
     		try
     		{
-            // E:\\Projects\\my\\parser\\SimpleParser\\SimpleParser\\Parser\\SimpleLanguage.g:55:15: ( '0' .. '9' )
-            // E:\\Projects\\my\\parser\\SimpleParser\\SimpleParser\\Parser\\SimpleLanguage.g:55:17: '0' .. '9'
+            // E:\\Projects\\my\\parser\\SimpleParser\\SimpleParser\\Parser\\SimpleLanguage.g:56:15: ( '0' .. '9' )
+            // E:\\Projects\\my\\parser\\SimpleParser\\SimpleParser\\Parser\\SimpleLanguage.g:56:17: '0' .. '9'
             {
             	MatchRange('0','9'); 
 

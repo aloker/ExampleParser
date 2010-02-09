@@ -7,7 +7,17 @@ namespace SimpleParser.Parser
   public class ParsedProgram
   {
     private readonly IList<IExpression> expressions = new List<IExpression>();
-    private readonly Storage storage = new Storage();
+    private readonly Storage storage;
+
+    public ParsedProgram()
+    {
+      storage = new Storage();
+    }
+
+    public ParsedProgram(Storage storage)
+    {
+      this.storage = storage;
+    }
 
     public Storage Storage
     {

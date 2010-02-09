@@ -4,7 +4,7 @@ namespace SimpleParser.Parser
 {
   public class UnknownVariableException : ApplicationException
   {
-    public UnknownVariableException(string name) : base(string.Format("Die Variable {0} ist nicht bekannt.", name))
+    public UnknownVariableException(string name) : base(string.Format("The variable {0} has not been declared.", name))
     {
     }
   }

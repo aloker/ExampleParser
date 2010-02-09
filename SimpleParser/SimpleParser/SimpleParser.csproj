@@ -75,6 +75,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Parser\ErrorHandler.cs" />
+    <Compile Include="Parser\Evaluator.cs" />
     <Compile Include="Parser\Generated\SimpleLanguageLexer.cs" />
     <Compile Include="Parser\Generated\SimpleLanguageParser.cs" />
     <Compile Include="Parser\Generated\SimpleLanguageTree.cs" />
