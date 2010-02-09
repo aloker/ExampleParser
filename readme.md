@@ -5,6 +5,8 @@ A simple expression parser using ANTLR.
 
 Accepts simple arithmetic expressions (+, -, *, /), assignments and variables.
 
+Binaries are downloadable at [github.com](http://github.com/aloker/ExampleParser/downloads)
+
 Language example
 ----------------
     x = 4
