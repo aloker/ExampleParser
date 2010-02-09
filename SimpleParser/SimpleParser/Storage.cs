@@ -1,10 +1,20 @@
 using System.Collections.Generic;
+using System.Linq;
 
 namespace SimpleParser
 {
   public class Storage
   {
     private readonly Dictionary<string, Variable> variables = new Dictionary<string, Variable>();
+
+    public IEnumerable<KeyValuePair<string, int>> Variables
+    {
+      get
+      {
+        return
+          variables.Select(keyValuePair => new KeyValuePair<string, int>(keyValuePair.Key, keyValuePair.Value.Value));
+      }
+    }
 
     public Variable GetVariable(string name)
     {

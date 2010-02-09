@@ -39,6 +39,8 @@
     <Reference Include="System.Core">
       <RequiredTargetFramework>3.5</RequiredTargetFramework>
     </Reference>
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml.Linq">
       <RequiredTargetFramework>3.5</RequiredTargetFramework>
     </Reference>
@@ -55,6 +57,12 @@
     <Compile Include="Expressions\IExpression.cs" />
     <Compile Include="Expressions\SimpleBinaryExpression.cs" />
     <Compile Include="Expressions\VariableExpression.cs" />
+    <Compile Include="MainForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MainForm.Designer.cs">
+      <DependentUpon>MainForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="ParsedProgram.cs" />
     <Compile Include="Parser\SimpleLanguageLexer.cs">
       <SubType>Code</SubType>
@@ -73,9 +81,18 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Parser\SimpleLanguage.tokens" />
+    <Compile Include="Parser\ErrorHandler.cs" />
+    <Compile Include="Parser\SimpleLanguageLexer.cs.ErrorHandling.cs" />
+    <Compile Include="Parser\SimpleLanguageTree.ErrorHandling.cs" />
+    <Compile Include="Parser\SimpleLanguageParser.ErrorHandling.cs" />
     <None Include="Parser\SimpleLanguageTree.tokens" />
     <None Include="SimpleLanguage.g" />
     <None Include="SimpleLanguageTree.g" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="MainForm.resx">
+      <DependentUpon>MainForm.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

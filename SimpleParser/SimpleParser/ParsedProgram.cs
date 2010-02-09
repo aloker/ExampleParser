@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using SimpleParser.Statements;
 
@@ -25,6 +26,7 @@ namespace SimpleParser
 
     public void Run()
     {
+      Console.WriteLine("Executing {0} statements", statements.Count);
       foreach (var statement in statements)
       {
         statement.Execute(Storage);

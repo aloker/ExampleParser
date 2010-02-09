@@ -14,14 +14,16 @@ tokens{
 	ASSIGN='=';
 	LEFTPAREN='(';
 	RIGHTPAREN=')';	
-	SEMICOLON=';';
 }
 
-program	:	statement+
+@parser::namespace { SimpleParser.Parser }
+@lexer::namespace { SimpleParser.Parser }
+
+program	:	statement* NEWLINE? EOF!
 	;
 
 statement
-	:	assignment SEMICOLON
+	:	assignment NEWLINE!
 	;
 	
 assignment
@@ -43,8 +45,9 @@ value
 
 
 NUMBER	:	DIGIT+;
+NEWLINE	:	 ('\r' | '\n')+;
 WHITESPACE
-	:	( '\t' | ' ' | '\r' | '\n'| '\u000C' )+ { $channel = HIDDEN; } ;
+	:	( '\t' | ' ' | '\u000C' )+ { $channel = HIDDEN; } ;
 IDENTIFIER
 	:	LETTER (DIGIT|LETTER)*;
 	

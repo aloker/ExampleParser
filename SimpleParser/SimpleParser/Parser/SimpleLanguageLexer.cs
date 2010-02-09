@@ -1,9 +1,11 @@
-// $ANTLR 3.1.2 E:\\Projects\\my\\parser\\SimpleParser\\SimpleParser\\SimpleLanguage.g 2010-02-09 12:35:05
+// $ANTLR 3.1.2 E:\\Projects\\my\\parser\\SimpleParser\\SimpleParser\\SimpleLanguage.g 2010-02-09 14:21:15
 
 // The variable 'variable' is assigned but its value is never used.
 #pragma warning disable 168, 219
 // Unreachable code detected.
 #pragma warning disable 162
+namespace  SimpleParser.Parser 
+{
 
 using System;
 using Antlr.Runtime;
@@ -14,6 +16,7 @@ using Stack 		= Antlr.Runtime.Collections.StackList;
 
 public partial class SimpleLanguageLexer : Lexer {
     public const int LEFTPAREN = 9;
+    public const int NEWLINE = 11;
     public const int RIGHTPAREN = 10;
     public const int LETTER = 16;
     public const int IDENTIFIER = 12;
@@ -21,7 +24,6 @@ public partial class SimpleLanguageLexer : Lexer {
     public const int NUMBER = 13;
     public const int WHITESPACE = 15;
     public const int PLUS = 4;
-    public const int SEMICOLON = 11;
     public const int DIGIT = 14;
     public const int LOWER = 17;
     public const int DIV = 7;
@@ -58,8 +60,8 @@ public partial class SimpleLanguageLexer : Lexer {
     		{
             int _type = PLUS;
     	int _channel = DEFAULT_TOKEN_CHANNEL;
-            // E:\\Projects\\my\\parser\\SimpleParser\\SimpleParser\\SimpleLanguage.g:7:6: ( '+' )
-            // E:\\Projects\\my\\parser\\SimpleParser\\SimpleParser\\SimpleLanguage.g:7:8: '+'
+            // E:\\Projects\\my\\parser\\SimpleParser\\SimpleParser\\SimpleLanguage.g:9:6: ( '+' )
+            // E:\\Projects\\my\\parser\\SimpleParser\\SimpleParser\\SimpleLanguage.g:9:8: '+'
             {
             	Match('+'); 
 
@@ -81,8 +83,8 @@ public partial class SimpleLanguageLexer : Lexer {
     		{
             int _type = MINUS;
     	int _channel = DEFAULT_TOKEN_CHANNEL;
-            // E:\\Projects\\my\\parser\\SimpleParser\\SimpleParser\\SimpleLanguage.g:8:7: ( '-' )
-            // E:\\Projects\\my\\parser\\SimpleParser\\SimpleParser\\SimpleLanguage.g:8:9: '-'
+            // E:\\Projects\\my\\parser\\SimpleParser\\SimpleParser\\SimpleLanguage.g:10:7: ( '-' )
+            // E:\\Projects\\my\\parser\\SimpleParser\\SimpleParser\\SimpleLanguage.g:10:9: '-'
             {
             	Match('-'); 
 
@@ -104,8 +106,8 @@ public partial class SimpleLanguageLexer : Lexer {
     		{
             int _type = MULT;
     	int _channel = DEFAULT_TOKEN_CHANNEL;
-            // E:\\Projects\\my\\parser\\SimpleParser\\SimpleParser\\SimpleLanguage.g:9:6: ( '*' )
-            // E:\\Projects\\my\\parser\\SimpleParser\\SimpleParser\\SimpleLanguage.g:9:8: '*'
+            // E:\\Projects\\my\\parser\\SimpleParser\\SimpleParser\\SimpleLanguage.g:11:6: ( '*' )
+            // E:\\Projects\\my\\parser\\SimpleParser\\SimpleParser\\SimpleLanguage.g:11:8: '*'
             {
             	Match('*'); 
 
@@ -127,8 +129,8 @@ public partial class SimpleLanguageLexer : Lexer {
     		{
             int _type = DIV;
     	int _channel = DEFAULT_TOKEN_CHANNEL;
-            // E:\\Projects\\my\\parser\\SimpleParser\\SimpleParser\\SimpleLanguage.g:10:5: ( '/' )
-            // E:\\Projects\\my\\parser\\SimpleParser\\SimpleParser\\SimpleLanguage.g:10:7: '/'
+            // E:\\Projects\\my\\parser\\SimpleParser\\SimpleParser\\SimpleLanguage.g:12:5: ( '/' )
+            // E:\\Projects\\my\\parser\\SimpleParser\\SimpleParser\\SimpleLanguage.g:12:7: '/'
             {
             	Match('/'); 
 
@@ -150,8 +152,8 @@ public partial class SimpleLanguageLexer : Lexer {
     		{
             int _type = ASSIGN;
     	int _channel = DEFAULT_TOKEN_CHANNEL;
-            // E:\\Projects\\my\\parser\\SimpleParser\\SimpleParser\\SimpleLanguage.g:11:8: ( '=' )
-            // E:\\Projects\\my\\parser\\SimpleParser\\SimpleParser\\SimpleLanguage.g:11:10: '='
+            // E:\\Projects\\my\\parser\\SimpleParser\\SimpleParser\\SimpleLanguage.g:13:8: ( '=' )
+            // E:\\Projects\\my\\parser\\SimpleParser\\SimpleParser\\SimpleLanguage.g:13:10: '='
             {
             	Match('='); 
 
@@ -173,8 +175,8 @@ public partial class SimpleLanguageLexer : Lexer {
     		{
             int _type = LEFTPAREN;
     	int _channel = DEFAULT_TOKEN_CHANNEL;
-            // E:\\Projects\\my\\parser\\SimpleParser\\SimpleParser\\SimpleLanguage.g:12:11: ( '(' )
-            // E:\\Projects\\my\\parser\\SimpleParser\\SimpleParser\\SimpleLanguage.g:12:13: '('
+            // E:\\Projects\\my\\parser\\SimpleParser\\SimpleParser\\SimpleLanguage.g:14:11: ( '(' )
+            // E:\\Projects\\my\\parser\\SimpleParser\\SimpleParser\\SimpleLanguage.g:14:13: '('
             {
             	Match('('); 
 
@@ -196,8 +198,8 @@ public partial class SimpleLanguageLexer : Lexer {
     		{
             int _type = RIGHTPAREN;
     	int _channel = DEFAULT_TOKEN_CHANNEL;
-            // E:\\Projects\\my\\parser\\SimpleParser\\SimpleParser\\SimpleLanguage.g:13:12: ( ')' )
-            // E:\\Projects\\my\\parser\\SimpleParser\\SimpleParser\\SimpleLanguage.g:13:14: ')'
+            // E:\\Projects\\my\\parser\\SimpleParser\\SimpleParser\\SimpleLanguage.g:15:12: ( ')' )
+            // E:\\Projects\\my\\parser\\SimpleParser\\SimpleParser\\SimpleLanguage.g:15:14: ')'
             {
             	Match(')'); 
 
@@ -212,29 +214,6 @@ public partial class SimpleLanguageLexer : Lexer {
     }
     // $ANTLR end "RIGHTPAREN"
 
-    // $ANTLR start "SEMICOLON"
-    public void mSEMICOLON() // throws RecognitionException [2]
-    {
-    		try
-    		{
-            int _type = SEMICOLON;
-    	int _channel = DEFAULT_TOKEN_CHANNEL;
-            // E:\\Projects\\my\\parser\\SimpleParser\\SimpleParser\\SimpleLanguage.g:14:11: ( ';' )
-            // E:\\Projects\\my\\parser\\SimpleParser\\SimpleParser\\SimpleLanguage.g:14:13: ';'
-            {
-            	Match(';'); 
-
-            }
-
-            state.type = _type;
-            state.channel = _channel;
-        }
-        finally 
-    	{
-        }
-    }
-    // $ANTLR end "SEMICOLON"
-
     // $ANTLR start "NUMBER"
     public void mNUMBER() // throws RecognitionException [2]
     {
@@ -242,10 +221,10 @@ public partial class SimpleLanguageLexer : Lexer {
     		{
             int _type = NUMBER;
     	int _channel = DEFAULT_TOKEN_CHANNEL;
-            // E:\\Projects\\my\\parser\\SimpleParser\\SimpleParser\\SimpleLanguage.g:43:8: ( ( DIGIT )+ )
-            // E:\\Projects\\my\\parser\\SimpleParser\\SimpleParser\\SimpleLanguage.g:43:10: ( DIGIT )+
+            // E:\\Projects\\my\\parser\\SimpleParser\\SimpleParser\\SimpleLanguage.g:47:8: ( ( DIGIT )+ )
+            // E:\\Projects\\my\\parser\\SimpleParser\\SimpleParser\\SimpleLanguage.g:47:10: ( DIGIT )+
             {
-            	// E:\\Projects\\my\\parser\\SimpleParser\\SimpleParser\\SimpleLanguage.g:43:10: ( DIGIT )+
+            	// E:\\Projects\\my\\parser\\SimpleParser\\SimpleParser\\SimpleLanguage.g:47:10: ( DIGIT )+
             	int cnt1 = 0;
             	do 
             	{
@@ -261,7 +240,7 @@ public partial class SimpleLanguageLexer : Lexer {
             	    switch (alt1) 
             		{
             			case 1 :
-            			    // E:\\Projects\\my\\parser\\SimpleParser\\SimpleParser\\SimpleLanguage.g:43:10: DIGIT
+            			    // E:\\Projects\\my\\parser\\SimpleParser\\SimpleParser\\SimpleLanguage.g:47:10: DIGIT
             			    {
             			    	mDIGIT(); 
 
@@ -292,24 +271,24 @@ public partial class SimpleLanguageLexer : Lexer {
     }
     // $ANTLR end "NUMBER"
 
-    // $ANTLR start "WHITESPACE"
-    public void mWHITESPACE() // throws RecognitionException [2]
+    // $ANTLR start "NEWLINE"
+    public void mNEWLINE() // throws RecognitionException [2]
     {
     		try
     		{
-            int _type = WHITESPACE;
+            int _type = NEWLINE;
     	int _channel = DEFAULT_TOKEN_CHANNEL;
-            // E:\\Projects\\my\\parser\\SimpleParser\\SimpleParser\\SimpleLanguage.g:45:2: ( ( '\\t' | ' ' | '\\r' | '\\n' | '\\u000C' )+ )
-            // E:\\Projects\\my\\parser\\SimpleParser\\SimpleParser\\SimpleLanguage.g:45:4: ( '\\t' | ' ' | '\\r' | '\\n' | '\\u000C' )+
+            // E:\\Projects\\my\\parser\\SimpleParser\\SimpleParser\\SimpleLanguage.g:48:9: ( ( '\\r' | '\\n' )+ )
+            // E:\\Projects\\my\\parser\\SimpleParser\\SimpleParser\\SimpleLanguage.g:48:12: ( '\\r' | '\\n' )+
             {
-            	// E:\\Projects\\my\\parser\\SimpleParser\\SimpleParser\\SimpleLanguage.g:45:4: ( '\\t' | ' ' | '\\r' | '\\n' | '\\u000C' )+
+            	// E:\\Projects\\my\\parser\\SimpleParser\\SimpleParser\\SimpleLanguage.g:48:12: ( '\\r' | '\\n' )+
             	int cnt2 = 0;
             	do 
             	{
             	    int alt2 = 2;
             	    int LA2_0 = input.LA(1);
 
-            	    if ( ((LA2_0 >= '\t' && LA2_0 <= '\n') || (LA2_0 >= '\f' && LA2_0 <= '\r') || LA2_0 == ' ') )
+            	    if ( (LA2_0 == '\n' || LA2_0 == '\r') )
             	    {
             	        alt2 = 1;
             	    }
@@ -320,7 +299,7 @@ public partial class SimpleLanguageLexer : Lexer {
             			case 1 :
             			    // E:\\Projects\\my\\parser\\SimpleParser\\SimpleParser\\SimpleLanguage.g:
             			    {
-            			    	if ( (input.LA(1) >= '\t' && input.LA(1) <= '\n') || (input.LA(1) >= '\f' && input.LA(1) <= '\r') || input.LA(1) == ' ' ) 
+            			    	if ( input.LA(1) == '\n' || input.LA(1) == '\r' ) 
             			    	{
             			    	    input.Consume();
 
@@ -347,6 +326,73 @@ public partial class SimpleLanguageLexer : Lexer {
             	loop2:
             		;	// Stops C# compiler whinging that label 'loop2' has no statements
 
+
+            }
+
+            state.type = _type;
+            state.channel = _channel;
+        }
+        finally 
+    	{
+        }
+    }
+    // $ANTLR end "NEWLINE"
+
+    // $ANTLR start "WHITESPACE"
+    public void mWHITESPACE() // throws RecognitionException [2]
+    {
+    		try
+    		{
+            int _type = WHITESPACE;
+    	int _channel = DEFAULT_TOKEN_CHANNEL;
+            // E:\\Projects\\my\\parser\\SimpleParser\\SimpleParser\\SimpleLanguage.g:50:2: ( ( '\\t' | ' ' | '\\u000C' )+ )
+            // E:\\Projects\\my\\parser\\SimpleParser\\SimpleParser\\SimpleLanguage.g:50:4: ( '\\t' | ' ' | '\\u000C' )+
+            {
+            	// E:\\Projects\\my\\parser\\SimpleParser\\SimpleParser\\SimpleLanguage.g:50:4: ( '\\t' | ' ' | '\\u000C' )+
+            	int cnt3 = 0;
+            	do 
+            	{
+            	    int alt3 = 2;
+            	    int LA3_0 = input.LA(1);
+
+            	    if ( (LA3_0 == '\t' || LA3_0 == '\f' || LA3_0 == ' ') )
+            	    {
+            	        alt3 = 1;
+            	    }
+
+
+            	    switch (alt3) 
+            		{
+            			case 1 :
+            			    // E:\\Projects\\my\\parser\\SimpleParser\\SimpleParser\\SimpleLanguage.g:
+            			    {
+            			    	if ( input.LA(1) == '\t' || input.LA(1) == '\f' || input.LA(1) == ' ' ) 
+            			    	{
+            			    	    input.Consume();
+
+            			    	}
+            			    	else 
+            			    	{
+            			    	    MismatchedSetException mse = new MismatchedSetException(null,input);
+            			    	    Recover(mse);
+            			    	    throw mse;}
+
+
+            			    }
+            			    break;
+
+            			default:
+            			    if ( cnt3 >= 1 ) goto loop3;
+            		            EarlyExitException eee3 =
+            		                new EarlyExitException(3, input);
+            		            throw eee3;
+            	    }
+            	    cnt3++;
+            	} while (true);
+
+            	loop3:
+            		;	// Stops C# compiler whinging that label 'loop3' has no statements
+
             	 _channel = HIDDEN; 
 
             }
@@ -367,23 +413,23 @@ public partial class SimpleLanguageLexer : Lexer {
     		{
             int _type = IDENTIFIER;
     	int _channel = DEFAULT_TOKEN_CHANNEL;
-            // E:\\Projects\\my\\parser\\SimpleParser\\SimpleParser\\SimpleLanguage.g:47:2: ( LETTER ( DIGIT | LETTER )* )
-            // E:\\Projects\\my\\parser\\SimpleParser\\SimpleParser\\SimpleLanguage.g:47:4: LETTER ( DIGIT | LETTER )*
+            // E:\\Projects\\my\\parser\\SimpleParser\\SimpleParser\\SimpleLanguage.g:52:2: ( LETTER ( DIGIT | LETTER )* )
+            // E:\\Projects\\my\\parser\\SimpleParser\\SimpleParser\\SimpleLanguage.g:52:4: LETTER ( DIGIT | LETTER )*
             {
             	mLETTER(); 
-            	// E:\\Projects\\my\\parser\\SimpleParser\\SimpleParser\\SimpleLanguage.g:47:11: ( DIGIT | LETTER )*
+            	// E:\\Projects\\my\\parser\\SimpleParser\\SimpleParser\\SimpleLanguage.g:52:11: ( DIGIT | LETTER )*
             	do 
             	{
-            	    int alt3 = 2;
-            	    int LA3_0 = input.LA(1);
+            	    int alt4 = 2;
+            	    int LA4_0 = input.LA(1);
 
-            	    if ( ((LA3_0 >= '0' && LA3_0 <= '9') || (LA3_0 >= 'A' && LA3_0 <= 'Z') || (LA3_0 >= 'a' && LA3_0 <= 'z')) )
+            	    if ( ((LA4_0 >= '0' && LA4_0 <= '9') || (LA4_0 >= 'A' && LA4_0 <= 'Z') || (LA4_0 >= 'a' && LA4_0 <= 'z')) )
             	    {
-            	        alt3 = 1;
+            	        alt4 = 1;
             	    }
 
 
-            	    switch (alt3) 
+            	    switch (alt4) 
             		{
             			case 1 :
             			    // E:\\Projects\\my\\parser\\SimpleParser\\SimpleParser\\SimpleLanguage.g:
@@ -404,12 +450,12 @@ public partial class SimpleLanguageLexer : Lexer {
             			    break;
 
             			default:
-            			    goto loop3;
+            			    goto loop4;
             	    }
             	} while (true);
 
-            	loop3:
-            		;	// Stops C# compiler whining that label 'loop3' has no statements
+            	loop4:
+            		;	// Stops C# compiler whining that label 'loop4' has no statements
 
 
             }
@@ -428,7 +474,7 @@ public partial class SimpleLanguageLexer : Lexer {
     {
     		try
     		{
-            // E:\\Projects\\my\\parser\\SimpleParser\\SimpleParser\\SimpleLanguage.g:49:16: ( LOWER | UPPER )
+            // E:\\Projects\\my\\parser\\SimpleParser\\SimpleParser\\SimpleLanguage.g:54:16: ( LOWER | UPPER )
             // E:\\Projects\\my\\parser\\SimpleParser\\SimpleParser\\SimpleLanguage.g:
             {
             	if ( (input.LA(1) >= 'A' && input.LA(1) <= 'Z') || (input.LA(1) >= 'a' && input.LA(1) <= 'z') ) 
@@ -457,8 +503,8 @@ public partial class SimpleLanguageLexer : Lexer {
     {
     		try
     		{
-            // E:\\Projects\\my\\parser\\SimpleParser\\SimpleParser\\SimpleLanguage.g:50:15: ( 'a' .. 'z' )
-            // E:\\Projects\\my\\parser\\SimpleParser\\SimpleParser\\SimpleLanguage.g:50:17: 'a' .. 'z'
+            // E:\\Projects\\my\\parser\\SimpleParser\\SimpleParser\\SimpleLanguage.g:55:15: ( 'a' .. 'z' )
+            // E:\\Projects\\my\\parser\\SimpleParser\\SimpleParser\\SimpleLanguage.g:55:17: 'a' .. 'z'
             {
             	MatchRange('a','z'); 
 
@@ -476,8 +522,8 @@ public partial class SimpleLanguageLexer : Lexer {
     {
     		try
     		{
-            // E:\\Projects\\my\\parser\\SimpleParser\\SimpleParser\\SimpleLanguage.g:51:15: ( 'A' .. 'Z' )
-            // E:\\Projects\\my\\parser\\SimpleParser\\SimpleParser\\SimpleLanguage.g:51:17: 'A' .. 'Z'
+            // E:\\Projects\\my\\parser\\SimpleParser\\SimpleParser\\SimpleLanguage.g:56:15: ( 'A' .. 'Z' )
+            // E:\\Projects\\my\\parser\\SimpleParser\\SimpleParser\\SimpleLanguage.g:56:17: 'A' .. 'Z'
             {
             	MatchRange('A','Z'); 
 
@@ -495,8 +541,8 @@ public partial class SimpleLanguageLexer : Lexer {
     {
     		try
     		{
-            // E:\\Projects\\my\\parser\\SimpleParser\\SimpleParser\\SimpleLanguage.g:52:15: ( '0' .. '9' )
-            // E:\\Projects\\my\\parser\\SimpleParser\\SimpleParser\\SimpleLanguage.g:52:17: '0' .. '9'
+            // E:\\Projects\\my\\parser\\SimpleParser\\SimpleParser\\SimpleLanguage.g:57:15: ( '0' .. '9' )
+            // E:\\Projects\\my\\parser\\SimpleParser\\SimpleParser\\SimpleLanguage.g:57:17: '0' .. '9'
             {
             	MatchRange('0','9'); 
 
@@ -511,48 +557,43 @@ public partial class SimpleLanguageLexer : Lexer {
 
     override public void mTokens() // throws RecognitionException 
     {
-        // E:\\Projects\\my\\parser\\SimpleParser\\SimpleParser\\SimpleLanguage.g:1:8: ( PLUS | MINUS | MULT | DIV | ASSIGN | LEFTPAREN | RIGHTPAREN | SEMICOLON | NUMBER | WHITESPACE | IDENTIFIER )
-        int alt4 = 11;
+        // E:\\Projects\\my\\parser\\SimpleParser\\SimpleParser\\SimpleLanguage.g:1:8: ( PLUS | MINUS | MULT | DIV | ASSIGN | LEFTPAREN | RIGHTPAREN | NUMBER | NEWLINE | WHITESPACE | IDENTIFIER )
+        int alt5 = 11;
         switch ( input.LA(1) ) 
         {
         case '+':
         	{
-            alt4 = 1;
+            alt5 = 1;
             }
             break;
         case '-':
         	{
-            alt4 = 2;
+            alt5 = 2;
             }
             break;
         case '*':
         	{
-            alt4 = 3;
+            alt5 = 3;
             }
             break;
         case '/':
         	{
-            alt4 = 4;
+            alt5 = 4;
             }
             break;
         case '=':
         	{
-            alt4 = 5;
+            alt5 = 5;
             }
             break;
         case '(':
         	{
-            alt4 = 6;
+            alt5 = 6;
             }
             break;
         case ')':
         	{
-            alt4 = 7;
-            }
-            break;
-        case ';':
-        	{
-            alt4 = 8;
+            alt5 = 7;
             }
             break;
         case '0':
@@ -566,16 +607,20 @@ public partial class SimpleLanguageLexer : Lexer {
         case '8':
         case '9':
         	{
-            alt4 = 9;
+            alt5 = 8;
+            }
+            break;
+        case '\n':
+        case '\r':
+        	{
+            alt5 = 9;
             }
             break;
         case '\t':
-        case '\n':
         case '\f':
-        case '\r':
         case ' ':
         	{
-            alt4 = 10;
+            alt5 = 10;
             }
             break;
         case 'A':
@@ -631,17 +676,17 @@ public partial class SimpleLanguageLexer : Lexer {
         case 'y':
         case 'z':
         	{
-            alt4 = 11;
+            alt5 = 11;
             }
             break;
         	default:
-        	    NoViableAltException nvae_d4s0 =
-        	        new NoViableAltException("", 4, 0, input);
+        	    NoViableAltException nvae_d5s0 =
+        	        new NoViableAltException("", 5, 0, input);
 
-        	    throw nvae_d4s0;
+        	    throw nvae_d5s0;
         }
 
-        switch (alt4) 
+        switch (alt5) 
         {
             case 1 :
                 // E:\\Projects\\my\\parser\\SimpleParser\\SimpleParser\\SimpleLanguage.g:1:10: PLUS
@@ -693,28 +738,28 @@ public partial class SimpleLanguageLexer : Lexer {
                 }
                 break;
             case 8 :
-                // E:\\Projects\\my\\parser\\SimpleParser\\SimpleParser\\SimpleLanguage.g:1:58: SEMICOLON
-                {
-                	mSEMICOLON(); 
-
-                }
-                break;
-            case 9 :
-                // E:\\Projects\\my\\parser\\SimpleParser\\SimpleParser\\SimpleLanguage.g:1:68: NUMBER
+                // E:\\Projects\\my\\parser\\SimpleParser\\SimpleParser\\SimpleLanguage.g:1:58: NUMBER
                 {
                 	mNUMBER(); 
 
                 }
                 break;
+            case 9 :
+                // E:\\Projects\\my\\parser\\SimpleParser\\SimpleParser\\SimpleLanguage.g:1:65: NEWLINE
+                {
+                	mNEWLINE(); 
+
+                }
+                break;
             case 10 :
-                // E:\\Projects\\my\\parser\\SimpleParser\\SimpleParser\\SimpleLanguage.g:1:75: WHITESPACE
+                // E:\\Projects\\my\\parser\\SimpleParser\\SimpleParser\\SimpleLanguage.g:1:73: WHITESPACE
                 {
                 	mWHITESPACE(); 
 
                 }
                 break;
             case 11 :
-                // E:\\Projects\\my\\parser\\SimpleParser\\SimpleParser\\SimpleLanguage.g:1:86: IDENTIFIER
+                // E:\\Projects\\my\\parser\\SimpleParser\\SimpleParser\\SimpleLanguage.g:1:84: IDENTIFIER
                 {
                 	mIDENTIFIER(); 
 
@@ -732,4 +777,5 @@ public partial class SimpleLanguageLexer : Lexer {
 
  
     
+}
 }

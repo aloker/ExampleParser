@@ -8,6 +8,8 @@ options
 	ASTLabelType=CommonTree;
 }
 
+@namespace { SimpleParser.Parser }
+
 @header{
 using SimpleParser;	
 using SimpleParser.Statements;
@@ -21,7 +23,7 @@ using SimpleParser.Expressions;
 
 
 program	returns [ParsedProgram Result]
-	:	(s=statement {prog.AddStatement(s.result);})+ { $Result = prog;}
+	:	(s=statement {prog.AddStatement($s.result);})* { $Result = prog;}
 	;
 
 statement returns [IStatement result]
